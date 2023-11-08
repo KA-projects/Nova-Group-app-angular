@@ -1,6 +1,18 @@
-
-<section>
-    <swiper-container #swiperRef swiperElement [config]="config">
-      <swiper-slide></swiper-slide>
-    </swiper-container>
-  </section>
+<section class="p-2 pt-4">
+  <swiper-container
+    #swiperRef
+    swiperElement
+    [config]="config"
+    class="outline-none rounded-2xl overflow-hidden"
+  >
+    <swiper-slide *ngFor="let image of heroImagesForSwiper">
+      <div class="h-[340px]">
+        <img
+          style="height: 100%; object-fit: cover; max-width: 100%"
+          [src]="image.src"
+          alt="hero"
+        />
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</section>

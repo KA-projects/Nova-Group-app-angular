@@ -10,31 +10,12 @@ export class HeroSliderComponent implements AfterViewInit {
   swiper?: Swiper;
   @ViewChild('swiperRef')
   swiperRef: ElementRef | undefined;
-  slides: Array<{ title: string }> = [
-    {
-      title: 'Slide 1',
-    },
-    {
-      title: 'Slide 2',
-    },
-    {
-      title: 'Slide 3',
-    },
-    {
-      title: 'Slide 4',
-    },
-    {
-      title: 'Slide 5',
-    },
-    {
-      title: 'Slide 6',
-    },
-    {
-      title: 'Slide 7',
-    },
-    {
-      title: 'Slide 8',
-    },
+
+  heroImagesForSwiper: Array<{ src: string }> = [
+    { src: 'assets/hero1.jpg' },
+    { src: 'assets/hero2.jpg' },
+    { src: 'assets/hero3.jpg' },
+    { src: 'assets/hero4.jpg' },
   ];
 
   ngAfterViewInit(): void {
@@ -43,17 +24,33 @@ export class HeroSliderComponent implements AfterViewInit {
 
   public config: SwiperOptions = {
     slidesPerView: 1,
-    spaceBetween: 25,
-    // breakpoints: {
-    //   320: { slidesPerView: 1.5 },
-    //   768: { slidesPerView: 2.5 },
-    //   1280: { slidesPerView: 3.5 },
-    // },
-    navigation: true,
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      enabled: true,
-      draggable: true,
+    spaceBetween: 5,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
+    // navigation: true,
+    // scrollbar: {
+    //   enabled: true,
+    //   draggable: true,
+    // },
+    // slideNextClass
+    injectStyles: [
+      `
+      .swiper-button-next, .swiper-button-prev {
+        background-color: #000 !important;
+        color: #000 !important;
+      }
+      .swiper-container::part(button-next) {
+        background-color: #000 !important;
+        color: #000 !important;
+      }
+      .swiper-button-next::part(button-next) {
+        background-color: #000 !important;
+        color: #000 !important;
+      }
+      .
+      `,
+    ],
   };
 }
