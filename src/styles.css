@@ -4,15 +4,44 @@
 @tailwind utilities;
 
 :root {
---swiper-theme-color:red;
- --swiper-navigation-size: 44px;
+  --swiper-theme-color: red;
+  --swiper-navigation-size: 44px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
   --swiper-navigation-color: var(--swiper-theme-color);
-  
 }
 
+.panel {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: slideTop 0.3s linear 1 alternate forwards;
+}
 
+@keyframes slideTop {
+  from {
+    top: 100%;
+    opacity: 0.6;
+  }
+  to {
+    top: 10%;
+    opacity: 1;
+  }
+}
 
+@keyframes slideBottom {
+  from {
+    top: 10%;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 1;
+  }
+}
 
-
+.remove-panel {
+  background: #fff !important;
+  animation: slideBottom 0.3s linear 1;
+}

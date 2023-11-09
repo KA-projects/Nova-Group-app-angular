@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'dialog-window-for-filter',
@@ -8,4 +8,14 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [MatButtonModule, MatDialogModule],
 })
-export class DialogWindowForFilterComponent {}
+export class DialogWindowForFilterComponent implements OnInit {
+  constructor(
+    private closeDialog: MatDialogRef<DialogWindowForFilterComponent>
+  ) {}
+
+  ngOnInit(): void {
+    this.closeDialog.beforeClosed().subscribe(() => {
+      this.closeDialog.addPanelClass(['remove-panel', 'panel']);
+    });
+  }
+}

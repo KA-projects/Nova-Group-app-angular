@@ -6,6 +6,7 @@ import { DialogWindowForFilterComponent } from '../dialog-window-for-filter/dial
 @Component({
   selector: 'app-filter-button',
   templateUrl: './filter-button.component.html',
+  styleUrls: ['./filter-button.component.css'],
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
@@ -13,6 +14,11 @@ export class FilterButtonComponent {
   constructor(private dialogWindow: MatDialog) {}
 
   openDialogWindow(): void {
-    this.dialogWindow.open(DialogWindowForFilterComponent);
+    this.dialogWindow.open(DialogWindowForFilterComponent, {
+      backdropClass: ['bg-black/60', 'backdrop-blur'],
+      maxWidth: '100%',
+      panelClass: ['panel'],
+      exitAnimationDuration: 300,
+    });
   }
 }
