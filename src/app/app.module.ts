@@ -13,6 +13,7 @@ import { CardNewsComponent } from 'src/layers/entities/ui/card-news/cardNews.com
 import { ArrowButtonComponent } from '../layers/shared/ui/button/arrowbutton/arrowbutton.component';
 import { FilterButtonComponent } from 'src/layers/features/ui/filter-button/filter-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApartmentListComponent } from 'src/layers/widgets/ui/apartment-list/apartment-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeroSliderComponent,
     CardNewsComponent,
     ArrowButtonComponent,
-
+    ApartmentListComponent,
     //svg icons
     UserSvgComponent,
   ],
