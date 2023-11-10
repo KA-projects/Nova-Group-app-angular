@@ -13,12 +13,14 @@ import { DialogWindowForFilterComponent } from '../dialog-window-for-filter/dial
 export class FilterButtonComponent {
   constructor(private dialogWindow: MatDialog) {}
 
-  openDialogWindow(): void {
+  async openDialogWindow(): Promise<void> {
     this.dialogWindow.open(DialogWindowForFilterComponent, {
       backdropClass: ['bg-black/60', 'backdrop-blur'],
       maxWidth: '100%',
       panelClass: ['panel'],
       exitAnimationDuration: 300,
     });
+
+    // await fetchApi({ page: 0, purpose: 'for-sale' });
   }
 }

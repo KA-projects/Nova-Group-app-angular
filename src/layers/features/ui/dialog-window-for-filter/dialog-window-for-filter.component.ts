@@ -15,7 +15,7 @@ export class DialogWindowForFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.closeDialog.beforeClosed().subscribe(() => {
-      this.closeDialog.addPanelClass(['remove-panel', 'panel']);
+      this.closeDialog.addPanelClass(['slide-panel-bottom', 'panel']);
     });
   }
 }

@@ -17,6 +17,10 @@
   left: 0;
   right: 0;
   animation: slideTop 0.3s linear 1 alternate forwards;
+
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
 }
 
 @keyframes slideTop {
@@ -25,14 +29,14 @@
     opacity: 0.6;
   }
   to {
-    top: 10%;
+    top: 6%;
     opacity: 1;
   }
 }
 
 @keyframes slideBottom {
   from {
-    top: 10%;
+    top: 6%;
     opacity: 1;
   }
   to {
@@ -41,7 +45,7 @@
   }
 }
 
-.remove-panel {
+.slide-panel-bottom {
   background: #fff !important;
-  animation: slideBottom 0.3s linear 1;
+  animation: slideBottom 0.3s linear 1 forwards;
 }
