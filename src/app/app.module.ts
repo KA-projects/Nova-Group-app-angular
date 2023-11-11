@@ -14,6 +14,9 @@ import { ArrowButtonComponent } from '../layers/shared/ui/button/arrowbutton/arr
 import { FilterButtonComponent } from 'src/layers/features/ui/filter-button/filter-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApartmentListComponent } from 'src/layers/widgets/ui/apartment-list/apartment-list.component';
+import { ClientConsultationComponent } from 'src/layers/features/ui/client-consultation/client-consultation.component';
+
+import { SnackBarForFeedbackComponent } from 'src/layers/features/ui/snack-bar-for-feedback/snack-bar-for-feedback';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { ApartmentListComponent } from 'src/layers/widgets/ui/apartment-list/apa
     DirectivesModule,
     BrowserAnimationsModule,
     FilterButtonComponent,
+    ClientConsultationComponent,
+    SnackBarForFeedbackComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

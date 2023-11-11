@@ -7,5 +7,5 @@ import { bayutData } from 'localData/bayut-data';
   templateUrl: './apartment-list.component.html',
 })
 export class ApartmentListComponent {
-  apartments: BauytData = bayutData;
+  apartments: BauytData = bayutData.slice(0, 10);
 }
