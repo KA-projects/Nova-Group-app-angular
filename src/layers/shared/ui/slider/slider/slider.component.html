@@ -1,59 +1,48 @@
-<mat-card>
-  <mat-card-content>
-    <h2 class="example-h2">Slider configuration</h2>
+<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+  <label class="text-gray-500 font-light">Property value</label>
+  <div>{{ propertyValue | currency }}</div>
+  <mat-slider
+    class="!w-[90%] !max-w-full !absolute !top-12 !left-2"
+    [max]="1505650"
+    [min]="365325"
+    [color]="color"
+  >
+    <input matSliderThumb [(ngModel)]="propertyValue" #slider />
+  </mat-slider>
+</div>
 
-    <section class="example-section">
-      <mat-form-field class="example-margin example-width">
-        <mat-label>Value</mat-label>
-        <input matInput type="number" [(ngModel)]="value" />
-      </mat-form-field>
-      <mat-form-field class="example-margin example-width">
-        <mat-label>Min value</mat-label>
-        <input matInput type="number" [(ngModel)]="min" />
-      </mat-form-field>
-      <mat-form-field class="example-margin example-width">
-        <mat-label>Max value</mat-label>
-        <input matInput type="number" [(ngModel)]="max" />
-      </mat-form-field>
-      <mat-form-field class="example-margin example-width">
-        <mat-label>Step size</mat-label>
-        <input matInput type="number" [(ngModel)]="step" />
-      </mat-form-field>
-    </section>
+<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+  <label class="text-gray-500 font-light">Down payment</label>
+  <div class="flex justify-between">
+    <div>{{ downPayment | currency }}</div>
+    <div>{{ percentage }}%</div>
+  </div>
+  <mat-slider
+    class="!w-[90%] !max-w-full !absolute !top-12 !left-2"
+    [max]="865000"
+    [min]="102300"
+    [color]="color"
+  >
+    <input matSliderThumb [(ngModel)]="downPayment" />
+  </mat-slider>
+</div>
 
-    <section class="example-section">
-      <mat-checkbox [(ngModel)]="showTicks">Show ticks</mat-checkbox>
-    </section>
+<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+  <label class="text-gray-500 font-light">Year</label>
+  <div>{{ year }}</div>
+  <mat-slider
+    class="!w-[90%] !max-w-full !absolute !top-12 !left-2"
+    [max]="20"
+    [min]="1"
+    [color]="color"
+  >
+    <input matSliderThumb [(ngModel)]="year" />
+  </mat-slider>
+</div>
 
-    <section class="example-section">
-      <mat-checkbox [(ngModel)]="thumbLabel">Show thumb label</mat-checkbox>
-    </section>
+<div class="pl-4 mb-8">
+  <span class="font-medium">from </span>
+  <span class="text-xl font-kanit">{{ calculate.toFixed(0) | currency }}</span>
+</div>
 
-    <section class="example-section">
-      <mat-checkbox [(ngModel)]="disabled">Disabled</mat-checkbox>
-    </section>
-  </mat-card-content>
-</mat-card>
-
-<mat-card class="example-result-card">
-  <mat-card-content>
-    <h2>Result</h2>
-
-    <div class="example-label-container">
-      <label id="example-name-label" class="example-name-label">Value</label>
-      <label class="example-value-label">{{ slider.value }}</label>
-    </div>
-    <mat-slider
-      class="example-margin"
-      [disabled]="disabled"
-      [max]="max"
-      [min]="min"
-      [step]="step"
-      [discrete]="thumbLabel"
-      [showTickMarks]="showTicks"
-      [color]="color"
-    >
-      <input matSliderThumb [(ngModel)]="value" #slider />
-    </mat-slider>
-  </mat-card-content>
-</mat-card>
+<app-common-button text="Leave a request"></app-common-button>
