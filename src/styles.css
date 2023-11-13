@@ -54,7 +54,13 @@
   animation: slideBottom 0.3s linear 1 forwards;
 }
 
-.snack-bar-container {
-  background-color: blue !important;
-  margin-top: 100px !important;
+.error.mat-mdc-snack-bar-container {
+  max-width: 240px;
+  flex: none;
+  margin: 100px auto 0px;
+}
+
+.error > div.mdc-snackbar__surface {
+  background-color: #61b15a;
+  color: #fff;
 }

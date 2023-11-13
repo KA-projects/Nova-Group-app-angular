@@ -10,6 +10,7 @@ module.exports = {
         "metallic-gold": "#bd9b60",
         "gray-34": "#343434",
         "gray-107": "#6b7280",
+        snow: "#f5f8f7",
       },
     },
     fontFamily: {

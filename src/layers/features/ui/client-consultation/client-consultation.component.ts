@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  MatSnackBar,
-  MatSnackBarContainer,
-  MatSnackBarModule,
-} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -21,17 +17,6 @@ import { SnackBarForFeedbackComponent } from '../snack-bar-for-feedback/snack-ba
     MatButtonModule,
     MatSnackBarModule,
   ],
-  styles: [
-    `
-      :host {
-        display: block;
-        background: #fff;
-        border-radius: 8px;
-        padding: 16px;
-      }
-    `,
-  ],
-  // providers: [MatSnackBarContainer],
 })
 export class ClientConsultationComponent {
   name!: string;
@@ -46,11 +31,10 @@ export class ClientConsultationComponent {
     console.log('form submit and value :', name);
 
     this.snackBar.openFromComponent(SnackBarForFeedbackComponent, {
-      // duration: 5000,
+      duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      //important css class
-      panelClass: ['snack-bar-container'],
-    }).containerInstance;
+      panelClass: ['error'],
+    });
   }
 }

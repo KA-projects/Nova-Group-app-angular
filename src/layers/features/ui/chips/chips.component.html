@@ -1,0 +1,15 @@
+<mat-chip-listbox
+  (change)="setPurchaseMethodComponent($event)"
+  aria-label="Purchase Methods selection"
+>
+  <mat-chip-option
+    *ngFor="let title of purchaseMethodsTitles; let i = index"
+    [selected]="i === 0 ? true : false"
+  >
+    {{ title }}
+  </mat-chip-option>
+</mat-chip-listbox>
+
+<div *ngIf="plan">
+  <app-plan-view [plan]="plan"></app-plan-view>
+</div>
