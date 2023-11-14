@@ -15,7 +15,14 @@ import { PlanViewComponent } from '../plan-view/plan-view.component';
   imports: [MatChipsModule, CommonModule, PlanViewComponent],
 })
 export class ChipsComponent {
+  chipImages = [
+    'assets/mortgage-1.png',
+    'assets/contract.png',
+    'assets/mortgage-2.png',
+    'assets/car.png',
+  ];
   plan: Plan = 'mortgage';
+
   purchaseMethodsTitles = purchaseMethodsTitlesText;
 
   purchaseMethods = this.purchaseMethodsTitles.map((method) =>
@@ -41,7 +48,6 @@ export class ChipsComponent {
 
     if (this.isTypePlan(textValue) && havePurchaseMethod) {
       this.plan = textValue;
-      console.log(true);
     } else {
       throw new Error('const chipOfTitle is not of type Plan');
     }

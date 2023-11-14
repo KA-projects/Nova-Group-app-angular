@@ -36,9 +36,6 @@ import { AutoTradeInComponent } from '../layers/features/ui/auto-trade-in/auto-t
     //svg icons
     UserSvgComponent,
     HomePurchaseMethodsComponent,
-    InstallmentComponent,
-    TradeInComponent,
-    AutoTradeInComponent,
   ],
   imports: [
     BrowserModule,

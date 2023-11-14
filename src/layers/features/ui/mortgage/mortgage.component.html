@@ -11,5 +11,9 @@
     incididunt ut labore et dolore magna aliqua
   </p>
 
-  <app-slider></app-slider>
+  <app-slider [percentage]="12"></app-slider>
+
+  <div (click)="openDialog()">
+    <app-common-button text="Leave a request"></app-common-button>
+  </div>
 </div>

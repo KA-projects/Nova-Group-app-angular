@@ -1,0 +1,36 @@
+<div>
+  <img
+    src="/assets/consulting.jpeg"
+    alt="consulting"
+    style="width: 100%; max-width: 100%; height: 150px; object-fit: cover"
+  />
+
+  <div class="p-10">
+    <h2 class="text-gold font-bebas-neue mb-2 text-lg">Get consultation</h2>
+    <p class="font-kanit mb-4 text-gray-500 font-light">
+      Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod
+    </p>
+
+    <form (submit)="onSubmit($event)">
+      <input
+        type="text"
+        placeholder="Name"
+        class="bg-snow w-full px-4 mb-5 h-[55px] rounded-lg outline-none font-kanit font-light placeholder:font-kanit placeholder:font-thin"
+      />
+
+      <input
+        class="bg-snow w-full px-4 mb-5 h-[55px] rounded-lg outline-none font-kanit font-light placeholder:font-kanit placeholder:font-thin"
+        type="tel"
+        placeholder="Phone number"
+        pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+      />
+
+      <button
+        type="submit"
+        class="w-full py-4 px-6 text-center disabled:bg-gray-300 bg-primary-green text-white rounded-lg font-kanit"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>
