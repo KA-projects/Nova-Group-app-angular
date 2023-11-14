@@ -25,32 +25,7 @@ export class HeroSliderComponent implements AfterViewInit {
   public config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 5,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    // navigation: true,
-    // scrollbar: {
-    //   enabled: true,
-    //   draggable: true,
-    // },
-    // slideNextClass
-    injectStyles: [
-      `
-      .swiper-button-next, .swiper-button-prev {
-        background-color: #000 !important;
-        color: #000 !important;
-      }
-      .swiper-container::part(button-next) {
-        background-color: #000 !important;
-        color: #000 !important;
-      }
-      .swiper-button-next::part(button-next) {
-        background-color: #000 !important;
-        color: #000 !important;
-      }
-      .
-      `,
-    ],
+
+    navigation: true,
   };
 }

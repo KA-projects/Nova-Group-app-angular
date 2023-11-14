@@ -15,6 +15,10 @@
   --swiper-navigation-color: var(--swiper-theme-color);
 }
 
+body {
+  color: initial;
+}
+/* dialog  style*/
 .panel {
   position: absolute !important;
   bottom: 0;
@@ -25,6 +29,11 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   overflow: hidden;
+}
+/* dialog  style*/
+.slide-panel-bottom {
+  background: #fff !important;
+  animation: slideBottom 0.3s linear 1 forwards;
 }
 
 @keyframes slideTop {
@@ -49,18 +58,69 @@
   }
 }
 
-.slide-panel-bottom {
-  background: #fff !important;
-  animation: slideBottom 0.3s linear 1 forwards;
-}
-
+/* snackbar */
 .error.mat-mdc-snack-bar-container {
   max-width: 240px;
   flex: none;
   margin: 100px auto 0px;
 }
-
+/* snackbar */
 .error > div.mdc-snackbar__surface {
   background-color: #61b15a;
   color: #fff;
 }
+
+.marquee {
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container-for-marquee {
+  position: absolute;
+  width: 3000px;
+  will-change: transform;
+  animation: marquee 60s linear -28s infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.container-for-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* .marquee {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 180%;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+} */

@@ -24,6 +24,10 @@ import { InstallmentComponent } from '../layers/features/ui/installment/installm
 import { TradeInComponent } from '../layers/features/ui/trade-in/trade-in.component';
 import { AutoTradeInComponent } from '../layers/features/ui/auto-trade-in/auto-trade-in.component';
 
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
+import { MarqueeComponent } from '../layers/features/ui/marquee/marquee.component';
+import { FooterComponent } from '../layers/entities/ui/footer/footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,16 +40,19 @@ import { AutoTradeInComponent } from '../layers/features/ui/auto-trade-in/auto-t
     //svg icons
     UserSvgComponent,
     HomePurchaseMethodsComponent,
+    MarqueeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DirectivesModule,
     BrowserAnimationsModule,
+    // MdbCarouselModule,
     FilterButtonComponent,
     ClientConsultationComponent,
     SnackBarForFeedbackComponent,
     ChipsComponent,
+    FooterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
