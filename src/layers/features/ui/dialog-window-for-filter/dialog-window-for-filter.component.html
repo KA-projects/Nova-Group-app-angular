@@ -1,7 +1,59 @@
-<div mat-dialog-container class="bg-red-500">
-  <div>dialog works</div>
+<div mat-dialog-container class="!font-kanit">
+  <div class="flex justify-between items-center p-4">
+    <button (click)="close()" class="text-primary-green font-light">
+      Close
+    </button>
 
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
+    <div class="text-black text-lg">Filter</div>
+    <button class="text-primary-green font-light" (click)="reserForm()">
+      Reset
+    </button>
+  </div>
+
+  <!-- <select
+    (change)="searchProperties($event, filters.queryName)"
+    class="block"
+    *ngFor="let filters of filterData"
+  >
+    <option [value]="filter.value" *ngFor="let filter of filters.items">
+      {{ filter.name }}
+    </option>
+  </select> -->
+  <div class="flex flex-col items-center mt-10">
+    <mat-form-field>
+      <mat-label>Count of baths</mat-label>
+      <mat-select [(ngModel)]="baths">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2 </mat-option>
+        <mat-option [value]="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Count of rooms</mat-label>
+      <mat-select [(ngModel)]="rooms">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2 </mat-option>
+        <mat-option [value]="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Furnishing status</mat-label>
+      <mat-select [(ngModel)]="furnished">
+        <mat-option value="furnished">Furnished</mat-option>
+        <mat-option value="unfurnished">Unfurnished</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="mt-9 px-8" (click)="searchProperties(rooms, baths, furnished)">
+    <app-common-button text="Show apartments"></app-common-button>
   </div>
 </div>

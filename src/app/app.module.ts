@@ -19,10 +19,6 @@ import { ClientConsultationComponent } from 'src/layers/features/ui/client-consu
 import { SnackBarForFeedbackComponent } from 'src/layers/features/ui/snack-bar-for-feedback/snack-bar-for-feedback';
 import { HomePurchaseMethodsComponent } from '../layers/widgets/ui/home-purchase-methods/home-purchase-methods.component';
 import { ChipsComponent } from '../layers/features/ui/chips/chips.component';
-import { MortgageComponent } from '../layers/features/ui/mortgage/mortgage.component';
-import { InstallmentComponent } from '../layers/features/ui/installment/installment.component';
-import { TradeInComponent } from '../layers/features/ui/trade-in/trade-in.component';
-import { AutoTradeInComponent } from '../layers/features/ui/auto-trade-in/auto-trade-in.component';
 
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MarqueeComponent } from '../layers/features/ui/marquee/marquee.component';

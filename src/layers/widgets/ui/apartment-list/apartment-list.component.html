@@ -1,5 +1,8 @@
 <div class="px-4">
   <div class="grid grid-cols-1 gap-8">
+    <div *ngIf="apartments.length === 0" class="text-xl font-medium font-kanit">
+      No Results
+    </div>
     <div *ngFor="let apartment of apartments">
       <div class="relative">
         <img

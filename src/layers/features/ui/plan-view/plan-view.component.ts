@@ -22,6 +22,7 @@ const PLAN_VIEWS: Record<Plan, any> = {
 })
 export class PlanViewComponent {
   @Input() plan!: Plan;
+
   get planView(): any {
     const PlanViewComponent = PLAN_VIEWS[this.plan];
     return PlanViewComponent;

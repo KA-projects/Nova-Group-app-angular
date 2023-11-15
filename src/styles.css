@@ -42,14 +42,14 @@ body {
     opacity: 0.6;
   }
   to {
-    top: 6%;
+    top: 40%;
     opacity: 1;
   }
 }
 
 @keyframes slideBottom {
   from {
-    top: 6%;
+    top: 40%;
     opacity: 1;
   }
   to {
