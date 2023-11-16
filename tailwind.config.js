@@ -12,6 +12,12 @@ module.exports = {
         "gray-107": "#6b7280",
         snow: "#f5f8f7",
       },
+      maxWidth: {
+        "container-sm": "500px",
+        "container-md": "700px",
+        "container-lg": "960px",
+        "container-xl": "1140px",
+      },
     },
     fontFamily: {
       kanit: ["Kanit", "sans-serif"],

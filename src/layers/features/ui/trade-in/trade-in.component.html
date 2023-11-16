@@ -1,43 +1,54 @@
-<div class="bg-snow mt-6 p-5">
-  <img
-    src="assets/trade-in.jpg"
-    alt="mortgage"
-    style="height: 240px; width: 100%; object-fit: cover; max-width: 100%"
-    class="rounded-3xl"
-  />
-  <h2 class="text-gold font-medium font-bebas-neue mt-8 text-xl">Trade-in</h2>
-  <p class="font-kanit font-light text-sm text-gray-500 mt-2 mb-10">
-    Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua
-  </p>
-
-  <input
-    type="text"
-    placeholder="Address"
-    class="bg-white w-full px-4 mb-5 h-[55px] rounded-lg outline-none font-kanit font-light placeholder:font-kanit placeholder:font-light placeholder:text-gray-500"
-  />
-
-  <div class="mb-2 text-gold">Count of rooms</div>
-  <div class="flex gap-2 w-full text-center font-kanit font-medium text-lg">
-    <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">1</div>
-    <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">2</div>
-    <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">3</div>
-    <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">4+</div>
+<div
+  class="bg-snow mx-auto mt-6 p-5 [&>p]:mb-10 md:relative md:max-w-container-md md:bg-white md:h-[700px] md:p-0 lg:max-w-container-lg xl:max-w-container-xl"
+>
+  <div class="h-[240px] md:h-full">
+    <img
+      src="assets/trade-in.jpg"
+      alt="mortgage"
+      style="height: 100%; width: 100%; object-fit: cover; max-width: 100%"
+      class="rounded-3xl"
+    />
   </div>
 
-  <div class="bg-white px-4 pt-2 pb-8 mt-4 mb-5 relative font-kanit rounded">
-    <label class="text-gray-500 font-light">Specify the total area</label>
-    <div class="flex justify-between">{{ slider.value }}</div>
-    <mat-slider
-      class="!w-[90%] !max-w-full !absolute !top-12 !left-2"
-      [max]="99"
-      [min]="22"
-    >
-      <input matSliderThumb #slider />
-    </mat-slider>
-  </div>
+  <div
+    class="md:absolute md:top-10 md:left-12 md:bg-white md:w-[322px] md:rounded-2xl md:p-8"
+  >
+    <h2 class="text-gold font-medium font-bebas-neue mt-8 text-xl md:mt-0">
+      Trade-in
+    </h2>
+    <p class="font-kanit font-light text-sm text-gray-500 mt-2 mb-10 md:mb-4">
+      Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua
+    </p>
 
-  <div (click)="openDialog()" class="mt-5">
-    <app-common-button text="Leave a request"></app-common-button>
+    <input
+      type="text"
+      placeholder="Address"
+      class="bg-white w-full px-4 mb-5 h-[55px] rounded-lg outline-none font-kanit font-light placeholder:font-kanit placeholder:font-light placeholder:text-gray-500 md:bg-snow"
+    />
+
+    <div class="mb-2 text-gold">Count of rooms</div>
+    <div class="flex gap-2 w-full text-center font-kanit font-medium text-lg">
+      <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">1</div>
+      <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">2</div>
+      <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">3</div>
+      <div class="px-4 py-4 bg-gold text-white flex-1 rounded-md">4+</div>
+    </div>
+
+    <div class="bg-white px-4 pt-2 pb-8 mt-4 mb-5 relative font-kanit rounded">
+      <label class="text-gray-500 font-light">Specify the total area</label>
+      <div class="flex justify-between">{{ slider.value }}</div>
+      <mat-slider
+        class="!w-[90%] !max-w-full !absolute !top-12 !left-2"
+        [max]="99"
+        [min]="22"
+      >
+        <input matSliderThumb #slider />
+      </mat-slider>
+    </div>
+
+    <div (click)="openDialog()" class="mt-5">
+      <app-common-button text="Leave a request"></app-common-button>
+    </div>
   </div>
 </div>

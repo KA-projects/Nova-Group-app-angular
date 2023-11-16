@@ -1,19 +1,30 @@
-<div class="bg-snow mt-6 p-5">
-  <img
-    src="assets/mortgage.jpg"
-    alt="mortgage"
-    style="height: 240px; width: 100%; object-fit: cover; max-width: 100%"
-    class="rounded-3xl"
-  />
-  <h2 class="text-gold font-medium font-bebas-neue mt-10 text-xl">Mortgage</h2>
-  <p class="font-kanit font-light text-sm text-gray-500 mt-2 mb-10">
-    Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua
-  </p>
+<div
+  class="bg-snow mx-auto mt-6 p-5 [&>p]:mb-10 sm:relative sm:max-w-container-md sm:bg-white sm:h-[700px] sm:p-0 lg:max-w-container-lg xl:max-w-container-xl"
+>
+  <div class="h-[240px] sm:h-full">
+    <img
+      src="assets/mortgage.jpg"
+      alt="mortgage"
+      style="height: 100%; width: 100%; object-fit: cover; max-width: 100%"
+      class="rounded-3xl"
+    />
+  </div>
 
-  <app-slider [percentage]="12"></app-slider>
+  <div
+    class="sm:absolute sm:top-10 sm:left-12 sm:bg-white sm:w-[322px] sm:rounded-2xl sm:p-8"
+  >
+    <h2 class="text-gold font-medium font-bebas-neue mt-10 text-xl sm:mt-0">
+      Mortgage
+    </h2>
+    <p class="font-kanit font-light text-sm text-gray-500 mt-2">
+      Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua
+    </p>
 
-  <div (click)="openDialog()">
-    <app-common-button text="Leave a request"></app-common-button>
+    <app-slider [percentage]="12"></app-slider>
+
+    <div (click)="openDialog()">
+      <app-common-button text="Leave a request"></app-common-button>
+    </div>
   </div>
 </div>

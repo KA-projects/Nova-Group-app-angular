@@ -7,8 +7,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
+@layer base {
+  .adaptive-container {
+    @apply mx-auto max-w-container-sm md:max-w-container-md lg:max-w-container-lg xl:max-w-container-xl;
+  }
+}
+
 :root {
-  --swiper-theme-color: red;
+  --swiper-theme-color: green;
   --swiper-navigation-size: 44px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
@@ -71,14 +77,16 @@ body {
 }
 
 .marquee {
-  height: 420px;
+  height: 500px;
   position: relative;
   overflow: hidden;
 }
 
 .container-for-marquee {
+  height: 100%;
   position: absolute;
   width: 3000px;
+  padding-top: 30px;
   will-change: transform;
   animation: marquee 60s linear -28s infinite;
   white-space: nowrap;

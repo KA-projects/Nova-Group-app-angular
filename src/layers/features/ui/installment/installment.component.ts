@@ -18,7 +18,7 @@ export class InstallmentComponent {
     this.dialog.open(DialogWindowFeedbackComponent, {
       width: '90%',
       maxWidth: '370px',
-      height: '80%',
+      maxHeight: '700px',
       panelClass: ['rounded-3xl', 'overflow-hidden'],
       backdropClass: ['bg-black/60'],
       autoFocus: false,

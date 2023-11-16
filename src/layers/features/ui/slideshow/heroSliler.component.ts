@@ -25,7 +25,9 @@ export class HeroSliderComponent implements AfterViewInit {
   public config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 5,
-
+    pagination: {
+      clickable: true,
+    },
     navigation: true,
   };
 }

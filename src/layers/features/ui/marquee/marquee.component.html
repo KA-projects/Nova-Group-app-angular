@@ -1,6 +1,6 @@
 <div class="marquee mt-4">
   <div class="container-for-marquee flex flex-nowrap gap-8 w-full">
-    <div *ngFor="let apartment of apartments">
+    <div *ngFor="let apartment of apartments" class="hover:scale-110">
       <div class="relative">
         <img
           [src]="apartment.coverPhoto.url"

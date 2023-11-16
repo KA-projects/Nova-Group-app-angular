@@ -23,6 +23,7 @@ import { ChipsComponent } from '../layers/features/ui/chips/chips.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MarqueeComponent } from '../layers/features/ui/marquee/marquee.component';
 import { FooterComponent } from '../layers/entities/ui/footer/footer.component';
+import { BottomNavbarComponent } from '../layers/entities/ui/bottom-navbar/bottom-navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,14 @@ import { FooterComponent } from '../layers/entities/ui/footer/footer.component';
     UserSvgComponent,
     HomePurchaseMethodsComponent,
     MarqueeComponent,
+    BottomNavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DirectivesModule,
     BrowserAnimationsModule,
-    // MdbCarouselModule,
+    MdbCarouselModule,
     FilterButtonComponent,
     ClientConsultationComponent,
     SnackBarForFeedbackComponent,

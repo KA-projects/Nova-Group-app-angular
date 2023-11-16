@@ -1,4 +1,6 @@
-<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+<div
+  class="bg-white px-4 pt-2 pb-8 mb-2 relative font-kanit rounded md:bg-snow md:mt-4"
+>
   <label class="text-gray-500 font-light">Property value</label>
   <div>{{ propertyValue | currency }}</div>
   <mat-slider
@@ -11,7 +13,9 @@
   </mat-slider>
 </div>
 
-<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+<div
+  class="bg-white px-4 pt-2 pb-8 mb-2 relative font-kanit rounded md:bg-snow"
+>
   <label class="text-gray-500 font-light">Down payment</label>
   <div class="flex justify-between">
     <div>{{ downPayment | currency }}</div>
@@ -27,7 +31,9 @@
   </mat-slider>
 </div>
 
-<div class="bg-white px-4 pt-2 pb-8 mb-5 relative font-kanit rounded">
+<div
+  class="bg-white px-4 pt-2 pb-8 mb-2 relative font-kanit rounded md:bg-snow"
+>
   <label class="text-gray-500 font-light">Year</label>
   <div>{{ year }}</div>
   <mat-slider
