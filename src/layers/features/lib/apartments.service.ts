@@ -8,7 +8,7 @@ import { BauytData } from 'src/layers/widgets/types';
 })
 export class ApartmentsService {
   constructor() {}
-  private originalApartments = bayutData.slice(0, 10);
+  private originalApartments = bayutData.slice(0, 9);
   behaviorSubject = new BehaviorSubject<BauytData>(this.originalApartments);
 
   get getApartments() {

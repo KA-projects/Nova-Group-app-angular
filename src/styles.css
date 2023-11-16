@@ -105,6 +105,14 @@ body {
   }
 }
 
+#navbar {
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+}
+
+#bottomNavbar {
+  transition: bottom 0.3s;
+}
+
 /* .marquee {
   position: relative;
   height: 400px;

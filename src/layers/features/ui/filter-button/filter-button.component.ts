@@ -17,6 +17,7 @@ export class FilterButtonComponent {
     this.dialogWindow.open(DialogWindowForFilterComponent, {
       backdropClass: ['bg-black/60', 'backdrop-blur'],
       maxWidth: '100%',
+
       panelClass: ['panel'],
       exitAnimationDuration: 300,
     });
