@@ -1,4 +1,18 @@
-<div class="px-4 mt-4 lg:px-10">
+<!-- loading spinner -->
+<div *ngIf="!apartments" class="mx-auto w-[80px] mt-20">
+  <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div *ngIf="apartments" class="px-4 mt-4 lg:px-10">
   <div
     class="grid grid-cols-1 adaptive-container gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-4"
   >

@@ -1,22 +1,22 @@
 export const filterData = [
-  {
-    items: [
-      { name: "Buy", value: "for-sale" },
-      { name: "Rent", value: "for-rent" },
-    ],
-    placeholder: "Purpose",
-    queryName: "purpose",
-  },
-  {
-    items: [
-      { name: "Daily", value: "daily" },
-      { name: "Weekly", value: "weekly" },
-      { name: "Monthly", value: "monthly" },
-      { name: "Yearly", value: "yearly" },
-    ],
-    placeholder: "Rent Frequency",
-    queryName: "rentFrequency",
-  },
+  // {
+  //   items: [
+  //     { name: "Buy", value: "for-sale" },
+  //     { name: "Rent", value: "for-rent" },
+  //   ],
+  //   placeholder: "Purpose",
+  //   queryName: "purpose",
+  // },
+  // {
+  //   items: [
+  //     { name: "Daily", value: "daily" },
+  //     { name: "Weekly", value: "weekly" },
+  //     { name: "Monthly", value: "monthly" },
+  //     { name: "Yearly", value: "yearly" },
+  //   ],
+  //   placeholder: "Rent Frequency",
+  //   queryName: "rentFrequency",
+  // },
   {
     items: [
       { name: "10,000", value: "10000" },

@@ -1,16 +1,28 @@
 <div
   id="navbar"
-  class="py-2 px-6 fixed inset-x-0 top-0 bg-white z-10 w-full md:px-16"
+  class="py-2 px-1 fixed inset-x-0 top-0 bg-white z-10 w-full sm:px-16"
 >
   <div class="flex items-center justify-between">
-    <a routerLink="/">
-      <div class="text-primary-green w-16 text-center font-bebas-neue">
-        <div class="text-3xl leading-[1]">Nova</div>
-        <div class="text-[12px] leading-[1]">Group</div>
-      </div>
-    </a>
+    <div class="flex">
+      <a routerLink="/">
+        <div class="text-primary-green w-16 text-center font-bebas-neue">
+          <div class="text-3xl leading-[1]">Nova</div>
+          <div class="text-[12px] leading-[1]">Group</div>
+        </div>
+      </a>
+
+      <a
+        class="bg-primary-green ml-4 rounded-lg hover:bg-gold"
+        routerLink="/apartments"
+      >
+        <div class="h-full py-2 px-4 text-white font-kanit">Apartments</div>
+      </a>
+    </div>
+
     <div class="flex items-center">
-      <div class="text-gold font-kanit">+7 000 000 00 00</div>
+      <div class="text-gold font-kanit text-xs sm:text-base">
+        +7 000 000 00 00
+      </div>
       <div class="ml-4">
         <user-svg></user-svg>
       </div>

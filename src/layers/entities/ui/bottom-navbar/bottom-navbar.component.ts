@@ -39,7 +39,7 @@ export class BottomNavbarComponent {
       this.bottomNavbarElement.style.bottom = '-100px';
     }
 
-    if (this.prevScrollpos < currentScrollPos) {
+    if (this.prevScrollpos < currentScrollPos || currentScrollPos < 200) {
       this.navbarElement.style.top = '0';
     } else {
       this.navbarElement.style.top = '-100px';

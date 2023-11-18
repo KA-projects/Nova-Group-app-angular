@@ -19,7 +19,7 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
   ) {}
 
   // apartments: BauytData = this.apartmentsService.getApartments;
-  apartments!: BauytData;
+  apartments: BauytData | undefined = undefined;
 
   filterData = filterData;
 
@@ -27,20 +27,19 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
     'https://bayut.p.rapidapi.com/properties/list?lang=en&locationExternalIDs=5002&purpose=for-sale&categoryExternalID=4&hitsPerPage=25&page=1&sort=city-level-score';
 
   async ngOnInit() {
-    this.apartmentsService.behaviorSubject.subscribe((newValue) => {
-      this.apartments = newValue;
-    });
     console.log('init!!!!!!!!!!!!!!!!!!!!!');
-
-    //@ts-ignore
-    // this.apartments = dataTwo.hits;
   }
 
   async ngAfterViewInit() {
     // console.log('afterView');
-    // const data = await this.fetchDataFromRapidApi(this.rapidApiUrl);
-    // console.log('data: ', data.hits);
-    // this.apartments = data.hits;
+    // const rapidApiData = await this.fetchDataFromRapidApi(this.rapidApiUrl);
+    // console.log('data: ', rapidApiData.hits);
+    // this.apartments = rapidApiData.hits;
+
+    setTimeout(() => {
+      //@ts-ignore
+      this.apartments = dataThird.hits;
+    }, 2000);
   }
 
   async searchByParams(type: string, e: Event) {
@@ -53,14 +52,18 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
     console.log('result: ', this.rapidApiUrl + '&' + searchParams);
     const url = this.rapidApiUrl + '&' + searchParams;
 
-    // const data = await this.fetchDataFromRapidApi(url);
+    // this.apartments = undefined;
+    // const rapidApiData = await this.fetchDataFromRapidApi(url);
 
-    // this.apartments = data.hits;
+    // this.apartments = rapidApiData.hits;
 
     // console.log('data from search: ', data.hits);
 
-    //@ts-ignore
-    // this.apartments = dataThird.hits;
+    // setTimeout(() => {
+    //   //@ts-ignore
+    //   this.apartments = dataThird.hits;
+    // }, 2000);
+
     const newPathname = `${
       window.location.pathname
     }?${searchParams.toString()}`;
@@ -71,5 +74,18 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
   async fetchDataFromRapidApi(url: string) {
     return await ferchData(url);
     alert('done!!!!');
+  }
+
+  async reset() {
+    // const url = this.rapidApiUrl;
+
+    // this.apartments = undefined;
+    // const rapidApiData = await this.fetchDataFromRapidApi(url);
+
+    // this.apartments = rapidApiData.hits;
+
+    const newPathname = window.location.pathname;
+
+    this.router.navigateByUrl(newPathname, { replaceUrl: true });
   }
 }
