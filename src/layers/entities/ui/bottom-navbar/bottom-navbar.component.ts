@@ -27,6 +27,7 @@ export class BottomNavbarComponent {
 
   ngOnDestroy(): void {
     window.onscroll = null;
+    this.navbarElement.style.top = '0';
   }
 
   private handleScroll() {

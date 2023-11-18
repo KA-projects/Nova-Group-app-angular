@@ -7,6 +7,19 @@ type BayutParams = {
   page: number;
 };
 
+export const baseUrl = "https://bayut.p.rapidapi.com";
+
+export const ferchData = async (url: string) => {
+  const response = await axios.get(url, {
+    headers: {
+      "X-RapidAPI-Key": RAPID_API_KEY,
+      "X-RapidAPI-Host": "bayut.p.rapidapi.com",
+    },
+  });
+
+  return response.data;
+};
+
 export const fetchApi = async ({
   locationExternalIDs,
   purpose,

@@ -47,6 +47,7 @@ export class DialogWindowForFilterComponent implements OnInit {
   //   const values = getFilterValues(filterValue);
   //   console.log(values);
   // }
+
   searchProperties(rooms: number, baths: number, furnished: string) {
     this.apartmentService.filterProperties(rooms, baths, furnished);
     this.close();

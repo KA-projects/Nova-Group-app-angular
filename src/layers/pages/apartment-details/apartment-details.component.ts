@@ -4,10 +4,15 @@ import {
   OnInit,
   ViewChild,
   AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fetchApartmentDetailsFromRapidApi } from 'database/rapid-api';
-import { apartmentDetails } from 'localData/apartmentDetails';
+import { four } from 'localData/four';
+import { third } from 'localData/third';
+import { two } from 'localData/two';
+import { debounce } from 'src/layers/entities/lib/debounce';
+// import { apartmentDetails } from 'localData/apartmentDetails';
 import { ApartmentDetailsType } from 'src/layers/shared/types';
 import { Swiper, SwiperOptions } from 'swiper/types';
 
@@ -16,8 +21,15 @@ import { Swiper, SwiperOptions } from 'swiper/types';
   templateUrl: './apartment-details.component.html',
   styleUrls: ['./apartment-details.component.css'],
 })
-export class ApartmentDetailsComponent implements OnInit, AfterViewInit {
+export class ApartmentDetailsComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   constructor(private route: ActivatedRoute) {}
+
+  private prevScrollpos!: number;
+  private bottomNavbarElement!: HTMLElement;
+  private navbarElement!: HTMLElement;
+  private debouncedHandleScroll!: () => void;
 
   swiper?: Swiper;
   @ViewChild('swiperRef')
@@ -31,7 +43,8 @@ export class ApartmentDetailsComponent implements OnInit, AfterViewInit {
     navigation: true,
   };
 
-  apartmentDetails: ApartmentDetailsType = apartmentDetails;
+  //@ts-ignore
+  apartmentDetails: ApartmentDetailsType = four;
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
@@ -42,10 +55,29 @@ export class ApartmentDetailsComponent implements OnInit, AfterViewInit {
     //     const data = await fetchApartmentDetailsFromRapidApi(
     //       externalIdFromRoute
     //     );
+
+    //     this.apartmentDetails = data;
     //     console.log(data);
     //   };
     //   fetchData();
     // }
+
+    this.prevScrollpos = window.scrollY;
+
+    this.bottomNavbarElement = document.getElementById(
+      'bottomNavbar'
+    ) as HTMLElement;
+
+    this.navbarElement = document.getElementById('navbar') as HTMLElement;
+
+    this.debouncedHandleScroll = debounce(this.handleScroll.bind(this), 50);
+
+    window.onscroll = this.debouncedHandleScroll;
+  }
+
+  ngOnDestroy(): void {
+    window.onscroll = null;
+    this.navbarElement.style.top = '0';
   }
 
   ngAfterViewInit(): void {
@@ -53,7 +85,8 @@ export class ApartmentDetailsComponent implements OnInit, AfterViewInit {
   }
 
   htmlParser(xmlString: string) {
-    const doc = new DOMParser().parseFromString(xmlString, 'text/html');
+    const withBrTeg = xmlString.replace(/\n/g, '<br/>');
+    const doc = new DOMParser().parseFromString(withBrTeg, 'text/html');
 
     return doc.body.innerHTML;
   }
@@ -72,5 +105,23 @@ export class ApartmentDetailsComponent implements OnInit, AfterViewInit {
     const formattedDate = dateObj.toLocaleDateString('en-US', options);
 
     return formattedDate;
+  }
+
+  private handleScroll() {
+    let currentScrollPos = window.scrollY;
+
+    if (this.bottomNavbarElement) {
+      if (this.prevScrollpos > currentScrollPos) {
+        this.bottomNavbarElement.style.bottom = '0';
+      } else {
+        this.bottomNavbarElement.style.bottom = '-100px';
+      }
+    }
+    if (this.prevScrollpos < currentScrollPos || currentScrollPos < 100) {
+      this.navbarElement.style.top = '0';
+    } else {
+      this.navbarElement.style.top = '-100px';
+    }
+    this.prevScrollpos = currentScrollPos;
   }
 }
