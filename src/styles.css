@@ -5,7 +5,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap");
 
 @layer base {
   .adaptive-container {
@@ -14,7 +14,7 @@
 }
 
 :root {
-  --swiper-theme-color: green;
+  --swiper-theme-color: #988064;
   --swiper-navigation-size: 44px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;

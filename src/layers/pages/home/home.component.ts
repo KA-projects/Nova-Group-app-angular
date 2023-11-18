@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from '../entities/ui/footer/footer.component';
+import { FooterComponent } from '../../entities/ui/footer/footer.component';
 
 @Component({
   selector: 'app-home',

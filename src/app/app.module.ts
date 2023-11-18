@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HomeComponent } from 'src/layers/pages/home.component';
+import { HomeComponent } from 'src/layers/pages/home/home.component';
 import { NavbarComponent } from 'src/layers/entities/ui/navbar/navbar.component';
 import { UserSvgComponent } from 'src/layers/entities/ui/icons/user/userIcon.component';
 import { HeroSliderComponent } from 'src/layers/features/ui/slideshow/heroSliler.component';
@@ -20,10 +20,12 @@ import { SnackBarForFeedbackComponent } from 'src/layers/features/ui/snack-bar-f
 import { HomePurchaseMethodsComponent } from '../layers/widgets/ui/home-purchase-methods/home-purchase-methods.component';
 import { ChipsComponent } from '../layers/features/ui/chips/chips.component';
 
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MarqueeComponent } from '../layers/features/ui/marquee/marquee.component';
 import { FooterComponent } from '../layers/entities/ui/footer/footer.component';
 import { BottomNavbarComponent } from '../layers/entities/ui/bottom-navbar/bottom-navbar.component';
+import { ApartmentDetailsComponent } from '../layers/pages/apartment-details/apartment-details.component';
+import { SvgBathComponent } from '../layers/features/svg/svg-bath/svg-bath.component';
+import { SvgFurnishedComponent } from 'src/layers/features/svg/svg-furnished/svg-furnished.component';
 
 @NgModule({
   declarations: [
@@ -34,18 +36,20 @@ import { BottomNavbarComponent } from '../layers/entities/ui/bottom-navbar/botto
     CardNewsComponent,
     ArrowButtonComponent,
     ApartmentListComponent,
-    //svg icons
+    //svg icon
     UserSvgComponent,
     HomePurchaseMethodsComponent,
     MarqueeComponent,
     BottomNavbarComponent,
+    ApartmentDetailsComponent,
+    SvgBathComponent,
+    SvgFurnishedComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DirectivesModule,
     BrowserAnimationsModule,
-    MdbCarouselModule,
     FilterButtonComponent,
     ClientConsultationComponent,
     SnackBarForFeedbackComponent,

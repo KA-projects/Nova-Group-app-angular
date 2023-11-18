@@ -6,170 +6,204 @@
       No Results
     </div>
     <div *ngFor="let apartment of apartments">
-      <div class="relative">
-        <img
-          [src]="apartment.coverPhoto.url"
-          [alt]="apartment.title"
-          class="object-cover max-w-full h-auto rounded-xl"
-        />
+      <a
+        [routerLink]="['/apartment-details', apartment.externalID]"
+        class="flex flex-col group h-[470px]"
+      >
+        <div class="relative flex-1">
+          <!-- 1 -->
+          <img
+            [src]="apartment.coverPhoto.url"
+            [alt]="apartment.title"
+            class="object-cover transition-all duration-1000 max-w-full h-[340px] group-hover:h-[100%] w-full rounded-xl"
+          />
 
-        <div
-          class="absolute  top-2 left-4 px-4 py-0.5 rounded-full bg-white text-black capitalize"
-          *ngIf="apartment.furnishingStatus === 'furnished'"
-        >
-          {{ apartment.furnishingStatus }}
-        </div>
-
-        <div
-          [ngClass]="
-            apartment.furnishingStatus === 'furnished' ? 'top-10' : 'top-4'
-          "
-          class="absolute left-4 bg-light-green rounded-full py-0.5 px-4"
-        >
-          <svg
-            class="inline"
-            width="20px"
-            height="20px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            class="absolute top-2 left-4 px-4 py-0.5 rounded-full bg-white text-black capitalize"
+            *ngIf="apartment.furnishingStatus === 'furnished'"
           >
-            <path
-              opacity="1"
-              d="M10.7509 2.45007C11.4409 1.86007 12.5709 1.86007 13.2709 2.45007L14.8509 3.81007C15.1509 4.07007 15.7109 4.28007 16.1109 4.28007H17.8109C18.8709 4.28007 19.7409 5.15007 19.7409 6.21007V7.91007C19.7409 8.30007 19.9509 8.87007 20.2109 9.17007L21.5709 10.7501C22.1609 11.4401 22.1609 12.5701 21.5709 13.2701L20.2109 14.8501C19.9509 15.1501 19.7409 15.7101 19.7409 16.1101V17.8101C19.7409 18.8701 18.8709 19.7401 17.8109 19.7401H16.1109C15.7209 19.7401 15.1509 19.9501 14.8509 20.2101L13.2709 21.5701C12.5809 22.1601 11.4509 22.1601 10.7509 21.5701L9.17086 20.2101C8.87086 19.9501 8.31086 19.7401 7.91086 19.7401H6.18086C5.12086 19.7401 4.25086 18.8701 4.25086 17.8101V16.1001C4.25086 15.7101 4.04086 15.1501 3.79086 14.8501L2.44086 13.2601C1.86086 12.5701 1.86086 11.4501 2.44086 10.7601L3.79086 9.17007C4.04086 8.87007 4.25086 8.31007 4.25086 7.92007V6.20007C4.25086 5.14007 5.12086 4.27007 6.18086 4.27007H7.91086C8.30086 4.27007 8.87086 4.06007 9.17086 3.80007L10.7509 2.45007Z"
-              fill="#fff"
-            />
-            <path
-              d="M10.7905 15.17C10.5905 15.17 10.4005 15.09 10.2605 14.95L7.84055 12.53C7.55055 12.24 7.55055 11.76 7.84055 11.47C8.13055 11.18 8.61055 11.18 8.90055 11.47L10.7905 13.36L15.0905 9.06003C15.3805 8.77003 15.8605 8.77003 16.1505 9.06003C16.4405 9.35003 16.4405 9.83003 16.1505 10.12L11.3205 14.95C11.1805 15.09 10.9905 15.17 10.7905 15.17Z"
-              class="fill-light-green"
-            />
-          </svg>
-          <span class="ml-1 text-white">Verified</span>
+            {{ apartment.furnishingStatus }}
+          </div>
+
+          <div
+            [ngClass]="
+              apartment.furnishingStatus === 'furnished' ? 'top-10' : 'top-4'
+            "
+            class="absolute left-4 bg-light-green rounded-full py-0.5 px-4"
+          >
+            <svg
+              class="inline"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="1"
+                d="M10.7509 2.45007C11.4409 1.86007 12.5709 1.86007 13.2709 2.45007L14.8509 3.81007C15.1509 4.07007 15.7109 4.28007 16.1109 4.28007H17.8109C18.8709 4.28007 19.7409 5.15007 19.7409 6.21007V7.91007C19.7409 8.30007 19.9509 8.87007 20.2109 9.17007L21.5709 10.7501C22.1609 11.4401 22.1609 12.5701 21.5709 13.2701L20.2109 14.8501C19.9509 15.1501 19.7409 15.7101 19.7409 16.1101V17.8101C19.7409 18.8701 18.8709 19.7401 17.8109 19.7401H16.1109C15.7209 19.7401 15.1509 19.9501 14.8509 20.2101L13.2709 21.5701C12.5809 22.1601 11.4509 22.1601 10.7509 21.5701L9.17086 20.2101C8.87086 19.9501 8.31086 19.7401 7.91086 19.7401H6.18086C5.12086 19.7401 4.25086 18.8701 4.25086 17.8101V16.1001C4.25086 15.7101 4.04086 15.1501 3.79086 14.8501L2.44086 13.2601C1.86086 12.5701 1.86086 11.4501 2.44086 10.7601L3.79086 9.17007C4.04086 8.87007 4.25086 8.31007 4.25086 7.92007V6.20007C4.25086 5.14007 5.12086 4.27007 6.18086 4.27007H7.91086C8.30086 4.27007 8.87086 4.06007 9.17086 3.80007L10.7509 2.45007Z"
+                fill="#fff"
+              />
+              <path
+                d="M10.7905 15.17C10.5905 15.17 10.4005 15.09 10.2605 14.95L7.84055 12.53C7.55055 12.24 7.55055 11.76 7.84055 11.47C8.13055 11.18 8.61055 11.18 8.90055 11.47L10.7905 13.36L15.0905 9.06003C15.3805 8.77003 15.8605 8.77003 16.1505 9.06003C16.4405 9.35003 16.4405 9.83003 16.1505 10.12L11.3205 14.95C11.1805 15.09 10.9905 15.17 10.7905 15.17Z"
+                class="fill-light-green"
+              />
+            </svg>
+            <span class="ml-1 text-white">Verified</span>
+          </div>
         </div>
-      </div>
 
-      <div class="pb-2 pt-4 text-2xl font-bold text-gray-34 font-bebas-neue">
-        {{ apartment.title }}
-      </div>
-      <!-- title -->
-      <div class="flex items-center gap-x-2 text-gray-500">
-        <div>{{ apartment.rooms }}</div>
-        <svg
-          width="25px"
-          height="25px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <div class="shrink">
+          <!-- hover container  -->
+          <!-- 2 -->
+          <div
+            class="text-2xl mt-0 group-hover:mt-4 transition-all duration-1000 font-bold text-gray-34 font-bebas-neue"
+          >
+            {{ apartment.title }}
+          </div>
+          <!-- title -->
+          <div class="flex items-center gap-x-2 text-gray-500">
+            <div>{{ apartment.rooms }}</div>
+            <svg
+              width="25px"
+              height="25px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M3 5V19M3 16H21M21 19V13.2C21 12.0799 21 11.5198 20.782 11.092C20.5903 10.7157 20.2843 10.4097 19.908 10.218C19.4802 10 18.9201 10 17.8 10H11V15.7273M7 12H7.01M8 12C8 12.5523 7.55228 13 7 13C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11C7.55228 11 8 11.4477 8 12Z"
+                  class="stroke-gray-107"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+            </svg>
+
+            <div class="ml-2">{{ apartment.baths }}</div>
+            <svg
+              width="25px"
+              height="25px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 11H1.75C1.33579 11 1 11.3358 1 11.75C1 12.1642 1.33579 12.5 1.75 12.5H2V12.75L2.00008 12.7614L2.00001 12.8168L2.00001 12.8546C2 13.2299 2 13.4498 2.01557 13.6952C2.15751 15.9316 3.36604 17.9968 5.11758 19.3472C5.27527 19.4726 6.0307 19.9348 6.3887 20.1501C7.19042 20.5559 8.0623 20.823 8.96911 20.9148C9.21355 20.9396 9.36275 20.9452 9.61687 20.9548L9.62369 20.955C10.3639 20.9828 11.0885 21 11.75 21C12.4115 21 13.1361 20.9828 13.8763 20.955L13.883 20.9548C14.1372 20.9452 14.2865 20.9396 14.5309 20.9148C15.4378 20.823 16.3098 20.5559 17.1116 20.15C17.45 19.9508 18.178 19.5114 18.3827 19.347C20.1341 17.9966 21.3425 15.9315 21.4845 13.6952C21.5 13.4498 21.5 13.2299 21.5 12.8546L21.5 12.8168C21.5 12.7567 21.5001 12.6942 21.4963 12.6365C21.4933 12.5905 21.4886 12.545 21.4821 12.5H21.75C22.1642 12.5 22.5 12.1642 22.5 11.75C22.5 11.3358 22.1642 11 21.75 11H3.5H2Z"
+                  class="fill-gray-107"
+                />
+                <path
+                  opacity="0.5"
+                  d="M5.11758 19.3472C5.10383 19.3688 5.09106 19.3913 5.07934 19.4148L4.07934 21.4148C3.8941 21.7853 4.04427 22.2358 4.41475 22.421C4.78524 22.6062 5.23574 22.4561 5.42098 22.0856L6.3887 20.1502C6.0307 19.9348 5.27527 19.4727 5.11758 19.3472Z"
+                  class="fill-gray-107"
+                />
+                <path
+                  opacity="0.5"
+                  d="M17.1113 20.1499L18.0791 22.0855C18.2643 22.456 18.7149 22.6062 19.0853 22.4209C19.4558 22.2357 19.606 21.7852 19.4207 21.4147L18.4207 19.4147C18.409 19.3912 18.3962 19.3686 18.3824 19.3469C18.1778 19.5113 17.4498 19.9508 17.1113 20.1499Z"
+                  class="fill-gray-107"
+                />
+                <path
+                  opacity="0.5"
+                  d="M3.5 4.13516C3.5 3.23209 4.23209 2.5 5.13516 2.5C5.80379 2.5 6.40505 2.90708 6.65338 3.52788L6.79665 3.88607L8.15623 3.24613L8.04609 2.97079C7.56997 1.7805 6.41715 1 5.13516 1C3.40366 1 2 2.40366 2 4.13516V11H3.5V4.13516Z"
+                  class="fill-gray-107"
+                />
+                <path
+                  d="M6.79601 3.88615C6.20149 4.31936 5.71579 4.92343 5.41658 5.66021C4.99627 6.69522 5.01894 7.80672 5.39716 8.76659C5.47156 8.95542 5.61933 9.10604 5.80671 9.18404C5.99408 9.26204 6.20508 9.26077 6.3915 9.18052L12.3523 6.61444C12.7244 6.45425 12.902 6.02752 12.7535 5.65061C12.3751 4.69037 11.6363 3.87197 10.621 3.43821C9.80968 3.0916 8.94888 3.04497 8.15558 3.24621L6.79601 3.88615Z"
+                  class="fill-gray-107"
+                />
+              </g>
+            </svg>
+
+            <div class="ml-2">{{ apartment.area.toFixed(1) }}</div>
+            <div>sqft</div>
+            <svg
+              class="fill-gray-107"
+              width="25px"
+              height="25px"
+              viewBox="0 0 32 32"
+              id="Layer_1"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <g id="SVGRepo_iconCarrier">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: none;
+                    }
+                  </style>
+                </defs>
+                <path
+                  d="M27,22.142V9.858A3.9916,3.9916,0,1,0,22.142,5H9.858A3.9916,3.9916,0,1,0,5,9.858V22.142A3.9916,3.9916,0,1,0,9.858,27H22.142A3.9916,3.9916,0,1,0,27,22.142ZM26,4a2,2,0,1,1-2,2A2.0023,2.0023,0,0,1,26,4ZM4,6A2,2,0,1,1,6,8,2.002,2.002,0,0,1,4,6ZM6,28a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,28Zm16.142-3H9.858A3.9937,3.9937,0,0,0,7,22.142V9.858A3.9947,3.9947,0,0,0,9.858,7H22.142A3.9937,3.9937,0,0,0,25,9.858V22.142A3.9931,3.9931,0,0,0,22.142,25ZM26,28a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,26,28Z"
+                  transform="translate(0 0)"
+                />
+                <rect
+                  id="_Transparent_Rectangle_"
+                  data-name="&lt;Transparent Rectangle&gt;"
+                  class="cls-1"
+                  width="32"
+                  height="32"
+                />
+              </g>
+            </svg>
+            <!-- amentities -->
+          </div>
+          <div class="text-xl font-bold text-primary-green pt-2 font-kanit">
+            {{ apartment.price }} AED
+          </div>
+          <!--end hover container  -->
+        </div>
+
+        <div
+          class="h-0 opacity-0 group-hover:opacity-100 group-hover:h-[80px] transition-all duration-1000"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-
-          <g id="SVGRepo_iconCarrier">
-            <path
-              d="M3 5V19M3 16H21M21 19V13.2C21 12.0799 21 11.5198 20.782 11.092C20.5903 10.7157 20.2843 10.4097 19.908 10.218C19.4802 10 18.9201 10 17.8 10H11V15.7273M7 12H7.01M8 12C8 12.5523 7.55228 13 7 13C6.44772 13 6 12.5523 6 12C6 11.4477 6.44772 11 7 11C7.55228 11 8 11.4477 8 12Z"
-              class="stroke-gray-107"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </g>
-        </svg>
-
-        <div class="ml-2">{{ apartment.baths }}</div>
-        <svg
-          width="25px"
-          height="25px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-
-          <g id="SVGRepo_iconCarrier">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M2 11H1.75C1.33579 11 1 11.3358 1 11.75C1 12.1642 1.33579 12.5 1.75 12.5H2V12.75L2.00008 12.7614L2.00001 12.8168L2.00001 12.8546C2 13.2299 2 13.4498 2.01557 13.6952C2.15751 15.9316 3.36604 17.9968 5.11758 19.3472C5.27527 19.4726 6.0307 19.9348 6.3887 20.1501C7.19042 20.5559 8.0623 20.823 8.96911 20.9148C9.21355 20.9396 9.36275 20.9452 9.61687 20.9548L9.62369 20.955C10.3639 20.9828 11.0885 21 11.75 21C12.4115 21 13.1361 20.9828 13.8763 20.955L13.883 20.9548C14.1372 20.9452 14.2865 20.9396 14.5309 20.9148C15.4378 20.823 16.3098 20.5559 17.1116 20.15C17.45 19.9508 18.178 19.5114 18.3827 19.347C20.1341 17.9966 21.3425 15.9315 21.4845 13.6952C21.5 13.4498 21.5 13.2299 21.5 12.8546L21.5 12.8168C21.5 12.7567 21.5001 12.6942 21.4963 12.6365C21.4933 12.5905 21.4886 12.545 21.4821 12.5H21.75C22.1642 12.5 22.5 12.1642 22.5 11.75C22.5 11.3358 22.1642 11 21.75 11H3.5H2Z"
-              class="fill-gray-107"
-            />
-            <path
-              opacity="0.5"
-              d="M5.11758 19.3472C5.10383 19.3688 5.09106 19.3913 5.07934 19.4148L4.07934 21.4148C3.8941 21.7853 4.04427 22.2358 4.41475 22.421C4.78524 22.6062 5.23574 22.4561 5.42098 22.0856L6.3887 20.1502C6.0307 19.9348 5.27527 19.4727 5.11758 19.3472Z"
-              class="fill-gray-107"
-            />
-            <path
-              opacity="0.5"
-              d="M17.1113 20.1499L18.0791 22.0855C18.2643 22.456 18.7149 22.6062 19.0853 22.4209C19.4558 22.2357 19.606 21.7852 19.4207 21.4147L18.4207 19.4147C18.409 19.3912 18.3962 19.3686 18.3824 19.3469C18.1778 19.5113 17.4498 19.9508 17.1113 20.1499Z"
-              class="fill-gray-107"
-            />
-            <path
-              opacity="0.5"
-              d="M3.5 4.13516C3.5 3.23209 4.23209 2.5 5.13516 2.5C5.80379 2.5 6.40505 2.90708 6.65338 3.52788L6.79665 3.88607L8.15623 3.24613L8.04609 2.97079C7.56997 1.7805 6.41715 1 5.13516 1C3.40366 1 2 2.40366 2 4.13516V11H3.5V4.13516Z"
-              class="fill-gray-107"
-            />
-            <path
-              d="M6.79601 3.88615C6.20149 4.31936 5.71579 4.92343 5.41658 5.66021C4.99627 6.69522 5.01894 7.80672 5.39716 8.76659C5.47156 8.95542 5.61933 9.10604 5.80671 9.18404C5.99408 9.26204 6.20508 9.26077 6.3915 9.18052L12.3523 6.61444C12.7244 6.45425 12.902 6.02752 12.7535 5.65061C12.3751 4.69037 11.6363 3.87197 10.621 3.43821C9.80968 3.0916 8.94888 3.04497 8.15558 3.24621L6.79601 3.88615Z"
-              class="fill-gray-107"
-            />
-          </g>
-        </svg>
-
-        <div class="ml-2">{{ apartment.area.toFixed(1) }}</div>
-        <div>sqft</div>
-        <svg
-          class="fill-gray-107"
-          width="25px"
-          height="25px"
-          viewBox="0 0 32 32"
-          id="Layer_1"
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-
-          <g id="SVGRepo_iconCarrier">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: none;
-                }
-              </style>
-            </defs>
-            <path
-              d="M27,22.142V9.858A3.9916,3.9916,0,1,0,22.142,5H9.858A3.9916,3.9916,0,1,0,5,9.858V22.142A3.9916,3.9916,0,1,0,9.858,27H22.142A3.9916,3.9916,0,1,0,27,22.142ZM26,4a2,2,0,1,1-2,2A2.0023,2.0023,0,0,1,26,4ZM4,6A2,2,0,1,1,6,8,2.002,2.002,0,0,1,4,6ZM6,28a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,28Zm16.142-3H9.858A3.9937,3.9937,0,0,0,7,22.142V9.858A3.9947,3.9947,0,0,0,9.858,7H22.142A3.9937,3.9937,0,0,0,25,9.858V22.142A3.9931,3.9931,0,0,0,22.142,25ZM26,28a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,26,28Z"
-              transform="translate(0 0)"
-            />
-            <rect
-              id="_Transparent_Rectangle_"
-              data-name="&lt;Transparent Rectangle&gt;"
-              class="cls-1"
-              width="32"
-              height="32"
-            />
-          </g>
-        </svg>
-        <!-- amentities -->
-      </div>
-      <div class="text-xl font-bold text-primary-green pt-2 font-kanit">
-        {{ apartment.price }} AED
-      </div>
+          <div class="flex justify-between items-center h-full">
+            <span class="text-base font-kanit">
+              <span class="text-gray-500">Agency</span>
+              <br />
+              <span class="text-primary-green">{{
+                apartment.agency.name
+              }}</span>
+            </span>
+            <div class="h-[70px] ml-3 mr-4">
+              <img
+                class="w-fit h-full object-contain"
+                [src]="apartment.agency.logo.url"
+                alt="agency"
+              />
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

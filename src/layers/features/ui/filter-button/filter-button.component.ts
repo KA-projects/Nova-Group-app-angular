@@ -21,7 +21,5 @@ export class FilterButtonComponent {
       panelClass: ['panel'],
       exitAnimationDuration: 300,
     });
-
-    // await fetchApi({ page: 0, purpose: 'for-sale' });
   }
 }

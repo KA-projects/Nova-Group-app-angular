@@ -1,0 +1,202 @@
+<div>
+  <section class="lg:flex adaptive-container">
+    <swiper-container
+      #swiperRef
+      swiperElement
+      [config]="config"
+      class="outline-none overflow-hidden lg:mr-4"
+    >
+      <swiper-slide *ngFor="let image of apartmentDetails.photos">
+        <div class="">
+          <img
+            style="width: 100%; object-fit: cover; max-width: 100%"
+            [src]="image.url"
+            alt="hero"
+            class="h-[340px] md:h-[500px]"
+          />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </section>
+
+  <div class="bg-snow px-6 py-4">
+    <h2 class="font-bebas-neue text-lg">{{ apartmentDetails.title }}</h2>
+  </div>
+
+  <div class="p-5">
+    <div class="font-orbitron text-gold mb-2 ml-6">Description</div>
+    <div
+      class="bg-snow text-gray-500 rounded-3xl px-6 pt-4 pb-4 [&_*]:text-gray-500 [&_*]:font-kanit [&_*]:mt-3 [&_li]:text-gold [&_li]:bg-white [&_li]:inline-block [&_li]:mr-2 [&_li]:px-4 [&_li]:py-2 [&_li]:rounded-lg [&_li]:text-sm"
+      [innerHTML]="htmlParser(apartmentDetails.description)"
+    ></div>
+  </div>
+
+  <div class="px-4 mt-10">
+    <div
+      class="bg-snow px-8 py-2 my-3 rounded-3xl"
+      *ngFor="let amentity of apartmentDetails.amenities; let i = index"
+    >
+      <span class="font-kanit font-bold drop-shadow-md text-xl text-gold"
+        >0{{ i + 1 }}</span
+      >
+      <h6 class="font-kanit text-lg text-gold">
+        {{ amentity.text }}
+      </h6>
+      <div
+        class="text-gray-800"
+        *ngFor="let amentityText of amentity.amenities"
+      >
+        {{ amentityText.text }}
+      </div>
+    </div>
+  </div>
+
+  <div class="adaptive-container px-6">
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-8">
+        <!-- 1 -->
+        <div class="relative rounded-xl overflow-hidden">
+          <img
+            src="assets/bath.jpg"
+            alt="bath"
+            class="object-cover max-w-full h-auto w-full brightness-75"
+          />
+
+          <div class="absolute top-1/2 left-[10%]">
+            <div class="text-white font-bebas-neue text-3xl drop-shadow-lg">
+              Bath
+            </div>
+            <div class="text-white font-kanit drop-shadow-lg">
+              Modern Comforts: Unwind in Stylish Bathrooms
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-snow rounded-lg px-8 pt-16 pb-10">
+          <app-svg-bath></app-svg-bath>
+
+          <div class="mt-10">
+            <div class="text-xl font-kanit font-medium text-gray-700">
+              {{ apartmentDetails.amenities[2].text }}
+            </div>
+            <div class="mt-3 font-kanit text-gray-400 font-light">
+              {{ apartmentDetails.amenities[2].amenities[0].text }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative rounded-xl overflow-hidden">
+        <!-- 2 -->
+        <img
+          [src]="apartmentDetails.photos[2].url"
+          alt="rooms"
+          class="object-cover max-w-full h-auto w-full brightness-75"
+        />
+
+        <div class="absolute top-1/2 left-[10%]">
+          <div class="text-white font-bebas-neue text-3xl drop-shadow-lg">
+            Rooms
+          </div>
+          <div class="text-white font-kanit drop-shadow-lg">
+            Modern Living at Its Finest: Sleek Design Meets Comfort in Every
+            Room
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="adaptive-container px-6">
+    <div class="flex flex-col mt-6">
+      <div class="relative rounded-xl overflow-hidden">
+        <!-- 1 -->
+        <img
+          class="max-w-full w-full h-auto object-cover brightness-75"
+          [src]="apartmentDetails.photos[1].url"
+          alt="area"
+        />
+        <div class="absolute top-3/4 left-[10%] pr-10">
+          <div class="text-white font-bebas-neue text-3xl drop-shadow-lg">
+            {{ apartmentDetails.area.toFixed(0) }} square feet
+          </div>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="mt-5">
+        <!-- 2 -->
+        <div class="flex flex-row gap-5">
+          <div class="relative rounded-xl overflow-hidden">
+            <!-- inner flex 1 -->
+            <img [src]="apartmentDetails.photos[3].url" alt="amentity" />
+
+            <div
+              class="absolute top-3/4 h-10 w-full left-[10%]"
+              *ngIf="apartmentDetails.amenities[0].text"
+            >
+              <div class="text-white font-bebas-neue text-lg drop-shadow-lg">
+                {{ apartmentDetails.amenities[1].amenities[0].text }}
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-xl overflow-hidden">
+            <!-- inner flex 2 -->
+            <img [src]="apartmentDetails.photos[11].url" alt="amentity" />
+
+            <div
+              class="absolute top-3/4 h-10 w-full left-[10%]"
+              *ngIf="apartmentDetails.amenities[0].text"
+            >
+              <div class="text-white font-bebas-neue text-lg drop-shadow-lg">
+                {{ apartmentDetails.amenities[3].amenities[0].text }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <div class="bg-snow rounded-lg px-8 pt-16 pb-10">
+            <app-svg-furnished></app-svg-furnished>
+
+            <div class="mt-10">
+              <div class="text-xl font-kanit font-medium text-gray-700">
+                Furnished
+              </div>
+              <div class="mt-3 font-kanit text-gray-400 font-light">
+                Get an equipped apartment with a set of plumbing fixtures and a
+                kitchen set
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <!-- agency block -->
+      <div class="bg-snow rounded-lg px-8 pt-16 pb-10">
+        <div>
+          <img
+            class="w-full max-w-full h-auto object-cover rounded-md"
+            [src]="apartmentDetails.agency.logo.url"
+            alt="agency"
+          />
+        </div>
+
+        <div class="mt-10">
+          <div class="text-xl font-kanit font-medium text-gray-700">Agency</div>
+          <div class="mt-3 font-kanit text-gold font-light">
+            {{ apartmentDetails.agency.name }}
+          </div>
+          <div class="mt-1 font-kanit text-gray-500 font-light">
+            CreatedAt: {{ convertDatetime(apartmentDetails.agency.createdAt) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end container -->
+  </div>
+</div>
