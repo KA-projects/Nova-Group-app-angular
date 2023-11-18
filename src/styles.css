@@ -7,9 +7,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap");
 
+/* px-6 */
 @layer base {
   .adaptive-container {
     @apply mx-auto max-w-container-sm md:max-w-container-md lg:max-w-container-lg xl:max-w-container-xl;
+  }
+
+  .adaptive-container-v2 {
+    @apply px-6 sm:px-0 mx-auto max-w-container-sm md:max-w-container-md lg:max-w-container-lg xl:max-w-container-xl;
   }
 }
 

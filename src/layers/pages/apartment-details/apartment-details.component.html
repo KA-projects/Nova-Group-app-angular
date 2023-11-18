@@ -1,5 +1,6 @@
 <div>
-  <section class="lg:flex adaptive-container">
+  <section class="w-full">
+    <!-- slideshow -->
     <swiper-container
       #swiperRef
       swiperElement
@@ -7,12 +8,12 @@
       class="outline-none overflow-hidden lg:mr-4"
     >
       <swiper-slide *ngFor="let image of apartmentDetails.photos">
-        <div class="">
+        <div class="lg:h-[660px]">
           <img
             style="width: 100%; object-fit: cover; max-width: 100%"
             [src]="image.url"
             alt="hero"
-            class="h-[340px] md:h-[500px]"
+            class="h-[340px] md:h-full"
           />
         </div>
       </swiper-slide>
@@ -20,10 +21,16 @@
   </section>
 
   <div class="bg-snow px-6 py-4">
-    <h2 class="font-bebas-neue text-lg">{{ apartmentDetails.title }}</h2>
+    <!-- title -->
+    <div class="adaptive-container-v2 md:pl-6">
+      <h2 class="font-bebas-neue text-lg xl:text-2xl">
+        {{ apartmentDetails.title }}
+      </h2>
+    </div>
   </div>
 
-  <div class="p-5">
+  <div class="adaptive-container-v2 mt-5">
+    <!-- Description -->
     <div class="font-orbitron text-gold mb-2 ml-6">Description</div>
     <div
       class="bg-snow text-gray-500 rounded-3xl px-6 pt-4 pb-4 [&_*]:text-gray-500 [&_*]:font-kanit [&_*]:mt-3 [&_li]:text-gold [&_li]:bg-white [&_li]:inline-block [&_li]:mr-2 [&_li]:px-4 [&_li]:py-2 [&_li]:rounded-lg [&_li]:text-sm"
@@ -31,35 +38,40 @@
     ></div>
   </div>
 
-  <div class="px-4 mt-10">
-    <div
-      class="bg-snow px-8 py-2 my-3 rounded-3xl"
-      *ngFor="let amentity of apartmentDetails.amenities; let i = index"
-    >
-      <span class="font-kanit font-bold drop-shadow-md text-xl text-gold"
-        >0{{ i + 1 }}</span
-      >
-      <h6 class="font-kanit text-lg text-gold">
-        {{ amentity.text }}
-      </h6>
+  <div class="adaptive-container-v2 mt-10 sm:px-5">
+    <!-- amenities -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:grid-cols-4">
       <div
-        class="text-gray-800"
-        *ngFor="let amentityText of amentity.amenities"
+        class="bg-snow px-8 py-2 rounded-3xl lg:py-10"
+        *ngFor="let amentity of apartmentDetails.amenities; let i = index"
       >
-        {{ amentityText.text }}
+        <span class="font-kanit font-bold drop-shadow-md text-xl text-gold"
+          >0{{ i + 1 }}</span
+        >
+        <h6 class="font-kanit text-lg text-gold">
+          {{ amentity.text }}
+        </h6>
+        <div
+          class="text-gray-800 lg:font-light"
+          *ngFor="let amentityText of amentity.amenities"
+        >
+          {{ amentityText.text }}
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="adaptive-container px-6">
-    <div class="flex flex-col gap-8">
-      <div class="flex flex-col gap-8">
+  <div class="adaptive-container-v2 mt-10">
+    <div class="flex flex-col gap-8 md:flex-row md:gap-5">
+      <div class="flex flex-col gap-8 md:flex-row md:w-1/2 md:gap-5">
         <!-- 1 -->
-        <div class="relative rounded-xl overflow-hidden">
+        <!-- bath  -->
+        <div class="relative rounded-xl overflow-hidden md:w-1/2">
+          <!-- inner flex 1 -->
           <img
             src="assets/bath.jpg"
             alt="bath"
-            class="object-cover max-w-full h-auto w-full brightness-75"
+            class="object-cover max-w-full h-full w-full brightness-75"
           />
 
           <div class="absolute top-1/2 left-[10%]">
@@ -72,7 +84,8 @@
           </div>
         </div>
 
-        <div class="bg-snow rounded-lg px-8 pt-16 pb-10">
+        <div class="bg-snow rounded-lg px-8 pt-16 pb-10 md:w-1/2">
+          <!-- inner flex 2 -->
           <app-svg-bath></app-svg-bath>
 
           <div class="mt-10">
@@ -86,12 +99,13 @@
         </div>
       </div>
 
-      <div class="relative rounded-xl overflow-hidden">
+      <div class="relative rounded-xl overflow-hidden md:w-1/2">
         <!-- 2 -->
+        <!-- rooms -->
         <img
           [src]="apartmentDetails.photos[2].url"
           alt="rooms"
-          class="object-cover max-w-full h-auto w-full brightness-75"
+          class="object-cover max-w-full h-full w-full brightness-75"
         />
 
         <div class="absolute top-1/2 left-[10%]">
@@ -107,12 +121,13 @@
     </div>
   </div>
 
-  <div class="adaptive-container px-6">
-    <div class="flex flex-col mt-6">
-      <div class="relative rounded-xl overflow-hidden">
+  <div class="adaptive-container-v2">
+    <!--  container -->
+    <div class="flex flex-col mt-6 md:flex-row md:gap-5">
+      <div class="relative rounded-xl overflow-hidden md:w-1/2">
         <!-- 1 -->
         <img
-          class="max-w-full w-full h-auto object-cover brightness-75"
+          class="max-w-full w-full h-full object-cover brightness-75"
           [src]="apartmentDetails.photos[1].url"
           alt="area"
         />
@@ -124,12 +139,18 @@
         <div></div>
       </div>
 
-      <div class="mt-5">
+      <div class="mt-5 md:w-1/2 md:mt-0">
         <!-- 2 -->
-        <div class="flex flex-row gap-5">
-          <div class="relative rounded-xl overflow-hidden">
+        <div class="flex flex-row gap-5 sm:flex-col md:flex-row">
+          <div
+            class="relative rounded-xl overflow-hidden sm:h-[240px] md:w-1/2"
+          >
             <!-- inner flex 1 -->
-            <img [src]="apartmentDetails.photos[3].url" alt="amentity" />
+            <img
+              class="h-full max-w-full w-full object-cover"
+              [src]="apartmentDetails.photos[3].url"
+              alt="amentity"
+            />
 
             <div
               class="absolute top-3/4 h-10 w-full left-[10%]"
@@ -141,9 +162,15 @@
             </div>
           </div>
 
-          <div class="relative rounded-xl overflow-hidden">
+          <div
+            class="relative rounded-xl overflow-hidden sm:h-[240px] md:w-1/2"
+          >
             <!-- inner flex 2 -->
-            <img [src]="apartmentDetails.photos[11].url" alt="amentity" />
+            <img
+              class="h-full max-w-full w-full object-cover"
+              [src]="apartmentDetails.photos[11].url"
+              alt="amentity"
+            />
 
             <div
               class="absolute top-3/4 h-10 w-full left-[10%]"
@@ -174,29 +201,64 @@
       </div>
     </div>
 
-    <div class="mt-5">
-      <!-- agency block -->
-      <div class="bg-snow rounded-lg px-8 pt-16 pb-10">
-        <div>
-          <img
-            class="w-full max-w-full h-auto object-cover rounded-md"
-            [src]="apartmentDetails.agency.logo.url"
-            alt="agency"
-          />
-        </div>
+    <!--  end container -->
+  </div>
 
-        <div class="mt-10">
-          <div class="text-xl font-kanit font-medium text-gray-700">Agency</div>
-          <div class="mt-3 font-kanit text-gold font-light">
-            {{ apartmentDetails.agency.name }}
+  <div class="adaptive-container-v2 my-5">
+    <div class="flex flex-col gap-5 sm:flex-row">
+      <div class="sm:w-1/2 bg-snow rounded-lg">
+        <!-- 1 -->
+        <!-- agency block -->
+        <div class="px-8 pt-16 pb-10 md:py-10">
+          <div class="flex flex-col items-center gap-5">
+            <div class="md:w-1/2">
+              <img
+                class="w-full max-w-full h-auto object-cover rounded-md"
+                [src]="apartmentDetails.agency.logo.url"
+                alt="agency"
+              />
+            </div>
+
+            <div class="">
+              <div class="text-xl font-kanit font-medium text-gray-700">
+                Agency
+              </div>
+              <div class="mt-3 font-kanit text-gold font-light">
+                {{ apartmentDetails.agency.name }}
+              </div>
+              <div class="mt-1 font-kanit text-gray-500 font-light">
+                CreatedAt:
+                {{ convertDatetime(apartmentDetails.agency.createdAt) }}
+              </div>
+            </div>
           </div>
-          <div class="mt-1 font-kanit text-gray-500 font-light">
-            CreatedAt: {{ convertDatetime(apartmentDetails.agency.createdAt) }}
+        </div>
+      </div>
+
+      <div class="sm:w-1/2 bg-snow rounded-lg">
+        <!-- 2 -->
+        <!-- Detail information -->
+        <div
+          class="w-full px-8 pt-16 pb-10 md:py-10 flex justify-center font-kanit text-lg text-gray-800 [&_span]:text-primary-green"
+        >
+          <div>
+            <h5 class="text-gold mb-2 text-xl">Detail information</h5>
+            <div>
+              Price: <span>{{ apartmentDetails.price | currency }} </span>
+            </div>
+            <div>
+              Count of bath: <span>{{ apartmentDetails.baths }} </span>
+            </div>
+            <div>
+              Count of rooms: <span>{{ apartmentDetails.rooms }} </span>
+            </div>
+            <div>
+              Square:
+              <span>{{ apartmentDetails.area.toFixed(0) }} </span> square feet
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- end container -->
   </div>
 </div>
