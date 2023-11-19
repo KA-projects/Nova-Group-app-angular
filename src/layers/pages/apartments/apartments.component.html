@@ -1,3 +1,4 @@
+<!-- Filters -->
 <div class="adaptive-container-v2">
   <div class="mb-2 text-center font-kanit text-xl text-gray-700">Filters</div>
   <div class="flex flex-wrap">
@@ -25,6 +26,7 @@
   </div>
 </div>
 
+<!-- paginator -->
 <div class="adaptive-container-v2">
   <mat-paginator
     (page)="handlePageEvent($event)"
@@ -49,6 +51,7 @@
   </div>
 </div>
 
+<!-- apartments -->
 <div *ngIf="apartments" class="px-4 mt-4 lg:px-10">
   <div
     class="grid grid-cols-1 adaptive-container gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-4"

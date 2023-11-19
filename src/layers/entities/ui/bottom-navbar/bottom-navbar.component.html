@@ -42,7 +42,19 @@
         </a>
       </li>
       <li class="px-8">
-        <a routerLink="/apartments" class="block">
+        <a
+          routerLink="/apartments"
+          [queryParams]="{
+            lang: 'en',
+            locationExternalIDs: '5002',
+            purpose: 'for-sale',
+            categoryExternalID: '4',
+            hitsPerPage: '10',
+            page: '0',
+            sort: 'city-level-score'
+          }"
+          class="block"
+        >
           <svg
             fill="#024638"
             version="1.1"

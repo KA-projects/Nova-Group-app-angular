@@ -18,10 +18,8 @@ export class ApartmentListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    // setTimeout(() => {
-    //   //@ts-ignore
-    //   this.apartments = this.apartmentsService.getApartments;
-    // }, 4000);
+  async ngAfterViewInit() {
+    await this.apartmentsService.fetchApartmentsData();
+    this.apartments = this.apartmentsService.getApartments;
   }
 }

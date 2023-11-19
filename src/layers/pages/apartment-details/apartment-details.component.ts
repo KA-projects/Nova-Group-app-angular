@@ -12,7 +12,7 @@ import { four } from 'localData/four';
 import { third } from 'localData/third';
 import { two } from 'localData/two';
 import { debounce } from 'src/layers/entities/lib/debounce';
-// import { apartmentDetails } from 'localData/apartmentDetails';
+
 import { ApartmentDetailsType } from 'src/layers/shared/types';
 import { Swiper, SwiperOptions } from 'swiper/types';
 
@@ -31,6 +31,8 @@ export class ApartmentDetailsComponent
   private navbarElement!: HTMLElement;
   private debouncedHandleScroll!: () => void;
 
+  haveAmentities: boolean | undefined = undefined;
+
   swiper?: Swiper;
   @ViewChild('swiperRef')
   swiperRef: ElementRef | undefined;
@@ -43,25 +45,9 @@ export class ApartmentDetailsComponent
     navigation: true,
   };
 
-  //@ts-ignore
-  apartmentDetails: ApartmentDetailsType = four;
+  apartmentDetails: ApartmentDetailsType | undefined;
 
-  ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const externalIdFromRoute = routeParams.get('externalId');
-
-    // if (externalIdFromRoute) {
-    //   const fetchData = async () => {
-    //     const data = await fetchApartmentDetailsFromRapidApi(
-    //       externalIdFromRoute
-    //     );
-
-    //     this.apartmentDetails = data;
-    //     console.log(data);
-    //   };
-    //   fetchData();
-    // }
-
+  ngOnInit() {
     this.prevScrollpos = window.scrollY;
 
     this.bottomNavbarElement = document.getElementById(
@@ -80,8 +66,31 @@ export class ApartmentDetailsComponent
     this.navbarElement.style.top = '0';
   }
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
     this.swiper = this.swiperRef?.nativeElement.swiper;
+
+    const routeParams = this.route.snapshot.paramMap;
+    const externalIdFromRoute = routeParams.get('externalId');
+
+    if (externalIdFromRoute) {
+      const fetchData = async () => {
+        const data = await fetchApartmentDetailsFromRapidApi(
+          externalIdFromRoute
+        );
+
+        this.apartmentDetails = data;
+        console.log(data);
+      };
+      await fetchData();
+
+      this.haveAmentities = this.apartmentDetails?.amenities
+        ? this.apartmentDetails.amenities.length >= 2
+        : false;
+    } else {
+      alert(
+        `Incorrect externalId: ${externalIdFromRoute}. Please return main page`
+      );
+    }
   }
 
   htmlParser(xmlString: string) {

@@ -7,7 +7,7 @@ type BayutParams = {
   page: number;
 };
 
-export const baseUrl = "https://bayut.p.rapidapi.com";
+// export const baseUrl = "https://bayut.p.rapidapi.com";
 
 export const fetchRapidApi = async (url: string) => {
   const response = await axios.get(url, {

@@ -1,4 +1,18 @@
-<div>
+<!-- loading spinner -->
+<div *ngIf="!apartmentDetails" class="mx-auto w-[80px] mt-20">
+  <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div *ngIf="apartmentDetails">
   <section class="w-full">
     <!-- slideshow -->
     <swiper-container
@@ -38,7 +52,7 @@
     ></div>
   </div>
 
-  <div class="adaptive-container-v2 mt-10 sm:px-5">
+  <div *ngIf="haveAmentities" class="adaptive-container-v2 mt-10 sm:px-5">
     <!-- amenities -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:grid-cols-4">
       <div
@@ -55,7 +69,7 @@
           class="text-gray-800 lg:font-light"
           *ngFor="let amentityText of amentity.amenities"
         >
-          {{ amentityText.text }}
+          -{{ amentityText.text }}
         </div>
       </div>
     </div>
@@ -90,10 +104,16 @@
 
           <div class="mt-10">
             <div class="text-xl font-kanit font-medium text-gray-700">
-              {{ apartmentDetails.amenities[2].text }}
+              {{
+                haveAmentities ? apartmentDetails.amenities[1].text : "Security"
+              }}
             </div>
             <div class="mt-3 font-kanit text-gray-400 font-light">
-              {{ apartmentDetails.amenities[2].amenities[0].text }}
+              {{
+                haveAmentities
+                  ? apartmentDetails.amenities[0].amenities[0].text
+                  : "24/7"
+              }}
             </div>
           </div>
         </div>
@@ -155,7 +175,7 @@
 
             <div
               class="absolute top-3/4 h-10 w-full left-[10%]"
-              *ngIf="apartmentDetails.amenities[0].text"
+              *ngIf="haveAmentities"
             >
               <div class="text-white font-bebas-neue text-lg drop-shadow-lg">
                 {{ apartmentDetails.amenities[1].amenities[0].text }}
@@ -177,10 +197,10 @@
 
             <div
               class="absolute top-3/4 h-10 w-full left-[10%]"
-              *ngIf="apartmentDetails.amenities[0].text"
+              *ngIf="haveAmentities"
             >
               <div class="text-white font-bebas-neue text-lg drop-shadow-lg">
-                {{ apartmentDetails.amenities[3].amenities[0].text }}
+                {{ apartmentDetails.amenities[1].amenities[0].text }}
               </div>
             </div>
           </div>

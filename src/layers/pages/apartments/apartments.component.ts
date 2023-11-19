@@ -1,16 +1,12 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import {
-  MatPaginatorSelectConfig,
-  PageEvent,
-} from '@angular/material/paginator';
+import { AfterViewInit, Component } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MatSelectChange } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { filterData } from 'database/filterData';
 import { fetchRapidApi } from 'database/rapid-api';
-import { dataThird } from 'localData/bayut-data-third';
-import { dataTwo } from 'localData/bayut-data-two';
-import { ApartmentsService } from 'src/layers/features/lib/apartments.service';
+
 import { BauytData } from 'src/layers/widgets/types';
+import { initialRapidApiSearchParams } from '../config';
 
 @Component({
   selector: 'app-apartments',
@@ -24,36 +20,14 @@ export class ApartmentsComponent implements AfterViewInit {
 
   filterData = filterData;
 
-  rapidApiUrl =
-    'https://bayut.p.rapidapi.com/properties/list?lang=en&locationExternalIDs=5002&purpose=for-sale&categoryExternalID=4&hitsPerPage=10&page=0&sort=city-level-score';
+  private baseRapidApiUrl = 'https://bayut.p.rapidapi.com/properties/list';
 
   selectedValues: { [key: string]: any } = {};
 
   async ngAfterViewInit() {
-    const currentPageSearchParams = new URLSearchParams(window.location.search);
-    const newRapidApiUrl = this.rapidApiUrl + '&' + currentPageSearchParams;
-    // await this.fetchApartmentsData(newRapidApiUrl)
-
-    setTimeout(() => {
-      //@ts-ignore
-      this.apartments = dataThird.hits;
-    }, 2000);
-  }
-
-  async searchByParams(type: string, e: MatSelectChange) {
-    const value = e.value as string;
-
-    const currentPageSearchParams = new URLSearchParams(window.location.search);
-    currentPageSearchParams.set(type, value);
-
-    const newRapidApiUrl = this.rapidApiUrl + '&' + currentPageSearchParams;
-    // await this.fetchApartmentsData(newRapidApiUrl)
-
-    const newPathname = `${
-      window.location.pathname
-    }?${currentPageSearchParams.toString()}`;
-
-    this.router.navigateByUrl(newPathname, { replaceUrl: true });
+    const currentPageSearchString = window.location.search;
+    const newRapidApiUrl = this.baseRapidApiUrl + currentPageSearchString;
+    await this.fetchApartmentsData(newRapidApiUrl);
   }
 
   async fetchApartmentsData(url: string): Promise<void> {
@@ -62,33 +36,51 @@ export class ApartmentsComponent implements AfterViewInit {
     this.apartments = rapidApiData.hits;
   }
 
-  async reset() {
-    // await this.fetchApartmentsData(this.rapidApiUrl)
+  async searchByParams(type: string, e: MatSelectChange) {
+    const value = e.value as string;
 
-    const newPathname = window.location.pathname;
+    const currentPageUrl = new URL(window.location.href);
+    currentPageUrl.searchParams.set(type, value);
+
+    const newRapidApiUrl = this.baseRapidApiUrl + currentPageUrl.search;
+    await this.fetchApartmentsData(newRapidApiUrl);
+
+    const updatedCurrentPathname =
+      currentPageUrl.pathname + currentPageUrl.search;
+
+    this.router.navigateByUrl(updatedCurrentPathname, { replaceUrl: true });
+  }
+
+  async reset() {
+    const rapidApiUrl = this.baseRapidApiUrl + initialRapidApiSearchParams;
+
+    await this.fetchApartmentsData(rapidApiUrl);
+
+    const initialPathname =
+      window.location.pathname + initialRapidApiSearchParams;
 
     Object.keys(this.selectedValues).forEach((key) => {
       this.selectedValues[key] = null;
     });
 
-    this.router.navigateByUrl(newPathname, { replaceUrl: true });
+    this.router.navigateByUrl(initialPathname, { replaceUrl: true });
   }
 
   async handlePageEvent(event: PageEvent) {
-    const currentPageSearchParams = new URLSearchParams(window.location.search);
+    const currentPageUrl = new URL(window.location.href);
 
-    const rapidApiUrl = new URL(this.rapidApiUrl);
-    rapidApiUrl.searchParams.set('page', event.pageIndex.toString());
-    rapidApiUrl.searchParams.set('hitsPerPage', event.pageSize.toString());
+    currentPageUrl.searchParams.set('page', event.pageIndex.toString());
+    currentPageUrl.searchParams.set('hitsPerPage', event.pageSize.toString());
 
-    const newRapidApiUrl = rapidApiUrl.href + '&' + currentPageSearchParams;
+    console.log('currentPageUrl.search: ', currentPageUrl.search);
 
-    // await this.fetchApartmentsData(newRapidApiUrl);
+    const newRapidApiUrl = this.baseRapidApiUrl + currentPageUrl.search;
 
-    const newPathname = `${
-      window.location.pathname
-    }?${currentPageSearchParams.toString()}`;
+    await this.fetchApartmentsData(newRapidApiUrl);
 
-    this.router.navigateByUrl(newPathname, { replaceUrl: true });
+    const updatedCurrentPathname =
+      currentPageUrl.pathname + currentPageUrl.search;
+
+    this.router.navigateByUrl(updatedCurrentPathname, { replaceUrl: true });
   }
 }
