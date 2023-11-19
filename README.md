@@ -1,6 +1,10 @@
 # Features
 
-Operating system Ubuntu 22.04
+- Operating system Ubuntu 22.04
+- For database used RapidAPI
+- Full responsive design(mobile,tablet,laptop) pages
+- Full clickable pages
+- For UI used Angular Material and Tailwind CSS
 
 # Novagroup
 

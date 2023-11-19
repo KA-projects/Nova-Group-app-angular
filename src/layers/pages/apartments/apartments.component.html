@@ -25,13 +25,15 @@
   </div>
 </div>
 
-<mat-paginator
-  (page)="handlePageEvent($event)"
-  [length]="200"
-  [pageSizeOptions]="[10, 25, 50]"
-  aria-label="Select page"
->
-</mat-paginator>
+<div class="adaptive-container-v2">
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="200"
+    [pageSizeOptions]="[10, 25, 50]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
 
 <!-- loading spinner -->
 <div *ngIf="!apartments" class="mx-auto w-[80px] mt-20">

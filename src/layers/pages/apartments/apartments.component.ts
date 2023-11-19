@@ -17,13 +17,9 @@ import { BauytData } from 'src/layers/widgets/types';
   templateUrl: './apartments.component.html',
   styleUrls: ['./apartments.component.css'],
 })
-export class ApartmentsComponent implements OnInit, AfterViewInit {
-  constructor(
-    private apartmentsService: ApartmentsService,
-    private router: Router
-  ) {}
+export class ApartmentsComponent implements AfterViewInit {
+  constructor(private router: Router) {}
 
-  // apartments: BauytData = this.apartmentsService.getApartments;
   apartments: BauytData | undefined = undefined;
 
   filterData = filterData;
@@ -33,12 +29,10 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
 
   selectedValues: { [key: string]: any } = {};
 
-  async ngOnInit() {
-    console.log('init!!!!!!!!!!!!!!!!!!!!!');
-  }
-
   async ngAfterViewInit() {
-    // await this.fetchApartmentsData(this.rapidApiUrl)
+    const currentPageSearchParams = new URLSearchParams(window.location.search);
+    const newRapidApiUrl = this.rapidApiUrl + '&' + currentPageSearchParams;
+    // await this.fetchApartmentsData(newRapidApiUrl)
 
     setTimeout(() => {
       //@ts-ignore
@@ -49,15 +43,15 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
   async searchByParams(type: string, e: MatSelectChange) {
     const value = e.value as string;
 
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set(type, value);
+    const currentPageSearchParams = new URLSearchParams(window.location.search);
+    currentPageSearchParams.set(type, value);
 
-    // const newRapidApiUrl = this.rapidApiUrl + '&' + searchParams;
+    const newRapidApiUrl = this.rapidApiUrl + '&' + currentPageSearchParams;
     // await this.fetchApartmentsData(newRapidApiUrl)
 
     const newPathname = `${
       window.location.pathname
-    }?${searchParams.toString()}`;
+    }?${currentPageSearchParams.toString()}`;
 
     this.router.navigateByUrl(newPathname, { replaceUrl: true });
   }
@@ -74,7 +68,6 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
     const newPathname = window.location.pathname;
 
     Object.keys(this.selectedValues).forEach((key) => {
-      // You can set it to the default value if you have one
       this.selectedValues[key] = null;
     });
 
@@ -90,13 +83,11 @@ export class ApartmentsComponent implements OnInit, AfterViewInit {
 
     const newRapidApiUrl = rapidApiUrl.href + '&' + currentPageSearchParams;
 
-    await this.fetchApartmentsData(newRapidApiUrl);
+    // await this.fetchApartmentsData(newRapidApiUrl);
 
     const newPathname = `${
       window.location.pathname
     }?${currentPageSearchParams.toString()}`;
-
-    console.log(newRapidApiUrl.toString());
 
     this.router.navigateByUrl(newPathname, { replaceUrl: true });
   }
