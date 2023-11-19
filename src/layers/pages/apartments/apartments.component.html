@@ -1,17 +1,37 @@
-<div>
-  <select
-    (change)="searchByParams(filters.queryName, $event)"
-    class="mr-4 mt-4 px-6 py-2"
-    *ngFor="let filters of filterData"
-  >
-    <option>{{ filters.placeholder }}</option>
-    <option [value]="filter.value" *ngFor="let filter of filters.items">
-      {{ filter.name }}
-    </option>
-  </select>
+<div class="adaptive-container-v2">
+  <div class="mb-2 text-center font-kanit text-xl text-gray-700">Filters</div>
+  <div class="flex flex-wrap">
+    <mat-form-field class="mr-4 !font-kanit" *ngFor="let filters of filterData">
+      <mat-label>{{ filters.placeholder }} </mat-label>
+      <mat-select
+        [(ngModel)]="selectedValues[filters.queryName]"
+        (selectionChange)="searchByParams(filters.queryName, $event)"
+      >
+        <mat-option
+          class="!font-kanit"
+          [value]="filter.value"
+          *ngFor="let filter of filters.items"
+          >{{ filter.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button class="inline-block" (click)="reset()">Reset</button>
+    <button
+      class="inline-block font-kanit bg-gray-200 hover:bg-gray-300 py-2 px-6 mb-6 rounded"
+      (click)="reset()"
+    >
+      Reset
+    </button>
+  </div>
 </div>
+
+<mat-paginator
+  (page)="handlePageEvent($event)"
+  [length]="200"
+  [pageSizeOptions]="[10, 25, 50]"
+  aria-label="Select page"
+>
+</mat-paginator>
 
 <!-- loading spinner -->
 <div *ngIf="!apartments" class="mx-auto w-[80px] mt-20">
@@ -41,11 +61,18 @@
       >
         <div class="relative flex-1">
           <!-- 1 -->
-          <img
-            [src]="apartment.coverPhoto.url"
-            [alt]="apartment.title"
-            class="object-cover transition-all duration-1000 max-w-full h-[340px] group-hover:h-[100%] w-full rounded-xl"
-          />
+          <div
+            class="relative max-w-full h-[340px] group-hover:h-[100%] w-full transition-all duration-1000"
+          >
+            <img
+              [ngSrc]="apartment.coverPhoto.url"
+              [alt]="apartment.title"
+              priority
+              fill
+              sizes="33vw"
+              class="object-cover w-full rounded-xl"
+            />
+          </div>
 
           <div
             class="absolute top-2 left-4 px-4 py-0.5 rounded-full bg-white text-black capitalize"
@@ -223,11 +250,14 @@
                 apartment.agency.name
               }}</span>
             </span>
-            <div class="h-[70px] ml-3 mr-4">
+            <div class="relative h-[70px] ml-3 mr-4 w-1/2">
               <img
-                class="w-fit h-full object-contain"
-                [src]="apartment.agency.logo.url"
+                class="h-full object-contain"
+                [ngSrc]="apartment.agency.logo.url"
                 alt="agency"
+                priority
+                fill
+                sizes="10vw"
               />
             </div>
           </div>

@@ -27,6 +27,10 @@ import { ApartmentDetailsComponent } from '../layers/pages/apartment-details/apa
 import { SvgBathComponent } from '../layers/features/svg/svg-bath/svg-bath.component';
 import { SvgFurnishedComponent } from 'src/layers/features/svg/svg-furnished/svg-furnished.component';
 import { ApartmentsComponent } from '../layers/pages/apartments/apartments.component';
+import { NgOptimizedImage } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,10 @@ import { ApartmentsComponent } from '../layers/pages/apartments/apartments.compo
     SnackBarForFeedbackComponent,
     ChipsComponent,
     FooterComponent,
+    NgOptimizedImage,
+    FormsModule,
+    MatSelectModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
