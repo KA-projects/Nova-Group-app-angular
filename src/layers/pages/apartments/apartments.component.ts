@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { filterData } from 'database/filterData';
 import { fetchRapidApi } from 'database/rapid-api';
 
-import { BauytData } from 'src/layers/widgets/types';
+import { BayutData } from 'src/layers/widgets/types';
 import { initialRapidApiSearchParams } from '../config';
 
 @Component({
@@ -16,7 +16,7 @@ import { initialRapidApiSearchParams } from '../config';
 export class ApartmentsComponent implements AfterViewInit {
   constructor(private router: Router) {}
 
-  apartments: BauytData | undefined = undefined;
+  apartments: BayutData | undefined = undefined;
 
   filterData = filterData;
 
@@ -24,10 +24,16 @@ export class ApartmentsComponent implements AfterViewInit {
 
   selectedValues: { [key: string]: any } = {};
 
+  pageIndex: number = 0;
+
   async ngAfterViewInit() {
     const currentPageSearchString = window.location.search;
     const newRapidApiUrl = this.baseRapidApiUrl + currentPageSearchString;
     await this.fetchApartmentsData(newRapidApiUrl);
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const pageIndex = Number(searchParams.get('page'));
+    this.pageIndex = pageIndex;
   }
 
   async fetchApartmentsData(url: string): Promise<void> {
@@ -71,8 +77,6 @@ export class ApartmentsComponent implements AfterViewInit {
 
     currentPageUrl.searchParams.set('page', event.pageIndex.toString());
     currentPageUrl.searchParams.set('hitsPerPage', event.pageSize.toString());
-
-    console.log('currentPageUrl.search: ', currentPageUrl.search);
 
     const newRapidApiUrl = this.baseRapidApiUrl + currentPageUrl.search;
 

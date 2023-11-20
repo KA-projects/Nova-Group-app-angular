@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { fetchRapidApi } from 'database/rapid-api';
-import { bayutData } from 'localData/bayut-data';
+
 import { BehaviorSubject } from 'rxjs';
-import { BauytData } from 'src/layers/widgets/types';
+import { BayutData } from 'src/layers/widgets/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApartmentsService {
   constructor() {}
-  private originalApartments: BauytData | undefined = undefined;
+  private originalApartments: BayutData | undefined = undefined;
 
-  behaviorSubject = new BehaviorSubject<BauytData | undefined>(
+  behaviorSubject = new BehaviorSubject<BayutData | undefined>(
     this.originalApartments
   );
 

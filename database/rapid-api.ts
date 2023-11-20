@@ -1,12 +1,6 @@
 import axios from "axios";
 import { RAPID_API_KEY } from "src/env";
 
-type BayutParams = {
-  locationExternalIDs?: number;
-  purpose: "for-sale" | "for-rent";
-  page: number;
-};
-
 // export const baseUrl = "https://bayut.p.rapidapi.com";
 
 export const fetchRapidApi = async (url: string) => {

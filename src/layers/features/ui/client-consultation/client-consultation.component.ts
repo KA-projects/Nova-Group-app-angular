@@ -28,7 +28,6 @@ export class ClientConsultationComponent {
 
   onSubmit(e: SubmitEvent) {
     e.preventDefault();
-    console.log('form submit and value :', name);
 
     this.snackBar.openFromComponent(SnackBarForFeedbackComponent, {
       duration: 5000,

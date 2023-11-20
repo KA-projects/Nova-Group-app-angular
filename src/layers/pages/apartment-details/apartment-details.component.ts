@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fetchApartmentDetailsFromRapidApi } from 'database/rapid-api';
-import { four } from 'localData/four';
-import { third } from 'localData/third';
-import { two } from 'localData/two';
+
 import { debounce } from 'src/layers/entities/lib/debounce';
 
 import { ApartmentDetailsType } from 'src/layers/shared/types';
@@ -79,7 +77,6 @@ export class ApartmentDetailsComponent
         );
 
         this.apartmentDetails = data;
-        console.log(data);
       };
       await fetchData();
 

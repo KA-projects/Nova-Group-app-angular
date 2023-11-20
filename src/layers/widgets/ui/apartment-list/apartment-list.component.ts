@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BauytData } from '../../types';
-import { bayutData } from 'localData/bayut-data';
+import { BayutData } from '../../types';
+
 import { ApartmentsService } from 'src/layers/features/lib/apartments.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ApartmentsService } from 'src/layers/features/lib/apartments.service';
 export class ApartmentListComponent implements OnInit, AfterViewInit {
   constructor(private apartmentsService: ApartmentsService) {}
 
-  apartments: BauytData | undefined = undefined;
+  apartments: BayutData | undefined = undefined;
 
   ngOnInit(): void {
     this.apartmentsService.behaviorSubject.subscribe((newValue) => {

@@ -1,3 +1,1 @@
-import { apartmentDetails } from 'localData/apartmentDetails';
-
-export type ApartmentDetailsType = typeof apartmentDetails;
+export type ApartmentDetailsType = any;

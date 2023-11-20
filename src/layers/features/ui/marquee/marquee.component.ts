@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { bayutData } from 'localData/bayut-data';
-import { BauytData } from 'src/layers/widgets/types';
+
+import { BayutData } from 'src/layers/widgets/types';
+import { ApartmentsService } from '../../lib/apartments.service';
 
 @Component({
   selector: 'app-marquee',
@@ -8,5 +9,7 @@ import { BauytData } from 'src/layers/widgets/types';
   styleUrls: ['./marquee.component.css'],
 })
 export class MarqueeComponent {
-  apartments: BauytData = bayutData.slice(0, 6);
+  constructor(private apartmentsService: ApartmentsService) {}
+
+  apartments: BayutData | undefined = this.apartmentsService.getApartments;
 }
