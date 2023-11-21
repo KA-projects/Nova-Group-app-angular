@@ -208,7 +208,10 @@
                 apartment.agency.name
               }}</span>
             </span>
-            <div class="h-[70px] ml-3 mr-4">
+            <div
+              *ngIf="apartment.agency.logo?.url ? true : false"
+              class="h-[70px] ml-3 mr-4"
+            >
               <img
                 class="w-fit h-full object-contain"
                 [src]="apartment.agency.logo.url"

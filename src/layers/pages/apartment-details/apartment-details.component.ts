@@ -11,7 +11,7 @@ import { fetchApartmentDetailsFromRapidApi } from 'database/rapid-api';
 
 import { debounce } from 'src/layers/entities/lib/debounce';
 
-import { ApartmentDetailsType } from 'src/layers/shared/types';
+import { type ApartmentDetails } from 'src/layers/shared/types';
 import { Swiper, SwiperOptions } from 'swiper/types';
 
 @Component({
@@ -43,7 +43,7 @@ export class ApartmentDetailsComponent
     navigation: true,
   };
 
-  apartmentDetails: ApartmentDetailsType | undefined;
+  apartmentDetails: ApartmentDetails | undefined;
 
   ngOnInit() {
     this.prevScrollpos = window.scrollY;

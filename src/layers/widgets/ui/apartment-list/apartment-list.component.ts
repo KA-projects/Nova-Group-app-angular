@@ -12,6 +12,8 @@ export class ApartmentListComponent implements OnInit, AfterViewInit {
 
   apartments: BayutData | undefined = undefined;
 
+  haveAgencyLogo: boolean | undefined;
+
   ngOnInit(): void {
     this.apartmentsService.behaviorSubject.subscribe((newValue) => {
       this.apartments = newValue;
