@@ -1,3 +1,8 @@
+# Hosting
+
+Website is deployed on:
+https://nova-group-a0357.web.app/
+
 # Features
 
 - Operating system Ubuntu 22.04
